@@ -9,7 +9,6 @@ import {
   type MotionValue,
 } from "motion/react";
 import { Star, ArrowDown, MapPin, Clock } from "lucide-react";
-import HeroBackdrop from "@/components/hero/HeroBackdrop";
 import ScrollVideo from "@/components/hero/ScrollVideo";
 import { site, whatsappLink, defaultWhatsAppMessage } from "@/lib/site";
 
@@ -38,14 +37,11 @@ export default function Hero() {
     restDelta: 0.0008,
   });
 
-  /**
-   * Only the copy parallaxes, and only a little. The film used to drift
-   * downward too, which on a phone read as the body sliding off the bottom of
-   * the screen instead of the clip playing — it now holds its place and simply
-   * scrubs.
-   */
-  const copyY = useTransform(p, [0, 1], [0, -28]);
+  const copyY = useTransform(p, [0, 1], [0, -26]);
   const cueOpacity = useTransform(p, [0, 0.12], [1, 0], { clamp: true });
+
+  /* the pour rail — the one piece of chrome that tracks progress */
+  const railScale = useTransform(p, [0, 1], [0, 1]);
 
   return (
     <section
@@ -54,29 +50,50 @@ export default function Hero() {
     >
       <div className="sticky top-0 h-[100svh] overflow-hidden">
         {/*
-          Two constraints shape this container.
-
-          The backdrop lives inside it so that `mix-blend-mode` on the film has
-          something to blend against — blending only sees what was painted below
-          it in the same stacking context.
-
-          And the container must not create a 3D rendering context: any
-          `perspective` or `preserve-3d` ancestor composites the film on its own
-          and switches that blending back off.
+          A plain paper ground — no colour fields, no botanicals. It is painted
+          as a sibling *before* the film so that the film's
+          `mix-blend-mode: multiply` has something to blend into; blending only
+          sees what was painted below it in the same stacking context, and any
+          `perspective` ancestor would switch it off entirely.
         */}
-        <div className="relative mx-auto flex h-full w-full max-w-[1440px] flex-col justify-center gap-4 px-5 pb-6 pt-[calc(var(--nav-h)+0.5rem)] sm:gap-6 sm:px-8 lg:grid lg:grid-cols-[1.05fr_1fr] lg:items-center lg:gap-8 lg:pt-[var(--nav-h)]">
-          <HeroBackdrop p={p} />
+        <div
+          aria-hidden
+          className="absolute inset-0 bg-[linear-gradient(176deg,#fdfcf7_0%,#faf8ef_52%,#f5f3e8_100%)]"
+        />
 
-          {/* ------------------------------ copy ------------------------------ */}
-          <motion.div
-            style={{ y: copyY }}
-            className="relative z-20 shrink-0 text-center lg:text-left"
-          >
+        {/*
+          Full bleed on a phone, where the copy sits above it; on a wide screen
+          it is held to the right two thirds so the headline always has clear
+          ground under it.
+        */}
+        <div className="absolute inset-y-0 right-0 z-10 w-full mix-blend-multiply lg:bottom-[7%] lg:w-[64%]">
+          <ScrollVideo
+            p={p}
+            sources={[
+              { src: "/spaa-720.webm", type: "video/webm" },
+              { src: "/spaa.mp4", type: "video/mp4" },
+            ]}
+            poster="/hero-poster.jpg"
+            className="h-full w-full"
+            mediaClassName="object-contain object-bottom scale-[1.7] origin-bottom sm:scale-[1.3] lg:scale-[1.06]"
+            mask="radial-gradient(78% 66% at 54% 80%, #000 48%, transparent 92%)"
+          />
+        </div>
+
+        {/* a whisper of warmth under the subject, so it sits on the page */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-1/3 bg-[linear-gradient(180deg,transparent,rgba(245,243,232,0.85))]"
+        />
+
+        {/* ------------------------------ copy ------------------------------ */}
+        <div className="relative z-20 mx-auto flex h-full w-full max-w-[1440px] flex-col px-5 pb-6 pt-[calc(var(--nav-h)+0.5rem)] sm:px-8 lg:justify-center lg:pt-[var(--nav-h)]">
+          <motion.div style={{ y: copyY }} className="text-center lg:max-w-xl lg:text-left">
             <motion.div
               initial={{ opacity: 0, y: 14 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-              className="mx-auto flex w-fit items-center gap-2.5 rounded-full border border-forest/12 bg-paper/85 px-3.5 py-1.5 shadow-[0_10px_24px_-16px_rgba(23,56,26,0.5)] sm:px-4 sm:py-2 lg:mx-0"
+              className="mx-auto flex w-fit items-center gap-2.5 rounded-full border border-forest/12 bg-paper/90 px-3.5 py-1.5 shadow-[0_10px_24px_-16px_rgba(23,56,26,0.5)] sm:px-4 sm:py-2 lg:mx-0"
             >
               <span className="flex gap-0.5">
                 {Array.from({ length: 5 }).map((_, i) => (
@@ -88,11 +105,11 @@ export default function Hero() {
               </span>
             </motion.div>
 
-            <h1 className="relative mt-4 sm:mt-6">
+            <h1 className="mt-4 sm:mt-6">
               <span className="sr-only">
                 {site.name} — {site.tagline}
               </span>
-              <span aria-hidden className="relative block">
+              <span aria-hidden className="block">
                 {words.map((w, i) => (
                   <span key={w} className="block overflow-hidden">
                     <motion.span
@@ -103,7 +120,7 @@ export default function Hero() {
                         delay: 0.13 * i + 0.1,
                         ease: [0.16, 1, 0.3, 1],
                       }}
-                      className="display block text-[clamp(2.1rem,7.4vw,5.6rem)] leading-[0.98]"
+                      className="display block text-[clamp(2.2rem,7.6vw,5.8rem)] leading-[0.98]"
                     >
                       {i === 1 ? <span className="accent-text italic">{w}</span> : w}
                     </motion.span>
@@ -148,13 +165,12 @@ export default function Hero() {
 
               <a
                 href="#services"
-                className="w-full rounded-full border border-forest/20 bg-paper/50 px-8 py-3 text-[11px] uppercase tracking-[0.2em] text-forest transition-all duration-500 hover:border-forest/45 hover:bg-paper sm:w-auto sm:py-4 sm:text-[12px] sm:tracking-[0.22em]"
+                className="w-full rounded-full border border-forest/20 bg-paper/60 px-8 py-3 text-[11px] uppercase tracking-[0.2em] text-forest transition-all duration-500 hover:border-forest/45 hover:bg-paper sm:w-auto sm:py-4 sm:text-[12px] sm:tracking-[0.22em]"
               >
                 View Therapies
               </a>
             </motion.div>
 
-            {/* narration */}
             <div className="relative mt-8 hidden h-6 lg:block">
               {captions.map((c) => (
                 <Caption key={c.text} p={p} at={c.at} text={c.text} />
@@ -162,25 +178,11 @@ export default function Hero() {
             </div>
           </motion.div>
 
-          {/* ------------------------------ film ------------------------------ */}
-          <div className="relative z-10 min-h-0 flex-1 mix-blend-multiply">
-            <ScrollVideo
-              p={p}
-              sources={[
-                { src: "/spaa-720.webm", type: "video/webm" },
-                { src: "/spaa.mp4", type: "video/mp4" },
-              ]}
-              poster="/hero-poster.jpg"
-              className="h-full w-full lg:aspect-16/10 lg:h-auto"
-            />
-          </div>
-
-          {/* ------------------------------ detail strip ------------------------------ */}
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.95, ease: [0.16, 1, 0.3, 1] }}
-            className="relative z-20 hidden w-full max-w-3xl items-center justify-between gap-6 rounded-2xl glass px-7 py-4 lg:col-span-2 lg:flex"
+            className="mt-10 hidden w-full max-w-3xl items-center justify-between gap-6 rounded-2xl glass px-7 py-4 lg:flex"
           >
             <Fact icon={MapPin} label="Where" value={site.address.city} />
             <span className="h-8 w-px bg-forest/12" />
@@ -196,6 +198,17 @@ export default function Hero() {
           </motion.div>
         </div>
 
+        {/* pour progress, hairline on the right */}
+        <div
+          aria-hidden
+          className="absolute right-4 top-1/2 z-20 hidden h-40 w-px -translate-y-1/2 bg-forest/10 lg:block"
+        >
+          <motion.div
+            style={{ scaleY: railScale }}
+            className="h-full w-full origin-top bg-[linear-gradient(180deg,#a8783f,#8cc63f)]"
+          />
+        </div>
+
         {/* scroll cue */}
         <motion.div
           style={{ opacity: cueOpacity }}
@@ -207,7 +220,7 @@ export default function Hero() {
             transition={{ delay: 1.4, duration: 0.9 }}
             className="flex flex-col items-center gap-1.5 text-muted"
           >
-            <span className="text-[8.5px] uppercase tracking-[0.3em] sm:text-[9px] sm:tracking-[0.32em]">
+            <span className="text-[8.5px] uppercase tracking-[0.3em] sm:text-[9px]">
               Scroll to begin
             </span>
             <motion.span

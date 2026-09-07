@@ -1,18 +1,22 @@
 /**
- * ⚠️  ACTION REQUIRED — REPLACE WITH YOUR REAL GOOGLE REVIEWS
+ * ⚠️  SAMPLE CONTENT — REPLACE BEFORE THE SITE GOES LIVE
  *
- * These are PLACEHOLDERS. Open your Google Business listing, copy each real
- * reviewer's name, star rating, date and text, and paste them in below, then
- * remove the `sample: true` line so the "Sample" chip stops showing.
+ * These six entries are placeholder testimonials written to fill out the
+ * design, paired with stock portraits from Unsplash. They exist so a client
+ * review of the layout is not full of "lorem ipsum" — they are not real
+ * guests, and every card carries a "Sample" chip so nobody can mistake them
+ * for real ones.
  *
- * They are deliberately left as obvious placeholders rather than invented
- * testimonials: made-up reviews on a live business page are a real problem,
- * and fake ones would also poison the review structured data that Google
- * reads from this file.
+ * To go live: open your Google Business listing, replace `name`, `text`,
+ * `rating` and `date` with real reviews, swap `avatar` for the reviewer's own
+ * photo (or delete the line to fall back to an initials badge), and remove
+ * `sample: true` — the chip disappears with it.
  *
- * Nothing else needs changing — the carousel, the rating badge and the
- * JSON-LD all read from this array. Also update `site.rating` in
- * src/lib/site.ts to match your live listing.
+ * Publishing these as though they were genuine would be inventing customer
+ * testimonials, and they would also feed the `Review` structured data that
+ * Google reads from this file, so please do swap them out.
+ *
+ * Also update `site.rating` in src/lib/site.ts to match your live listing.
  */
 
 export type Review = {
@@ -23,72 +27,76 @@ export type Review = {
   text: string;
   source: "Google" | "Instagram" | "Facebook";
   /**
-   * Optional photograph of the reviewer. Paste a URL here — their Google
-   * profile picture, or a photo they gave you permission to use — and the card
-   * shows it instead of the initials badge.
+   * Photograph of the reviewer. Their Google profile picture, or a photo they
+   * gave you permission to use. Delete it and the card shows initials instead.
    */
   avatar?: string;
-  /**
-   * Marks an entry as scaffolding. While this is true the card shows a
-   * "Sample" chip so placeholder copy can never be mistaken for a real
-   * testimonial. Delete the line when you paste a genuine review in.
-   */
+  /** While true the card shows a "Sample" chip. Delete it for real reviews. */
   sample?: boolean;
 };
 
+const face = (id: string) =>
+  `https://images.unsplash.com/photo-${id}?auto=format&fit=facearea&facepad=2.6&w=160&h=160&q=80`;
+
 export const reviews: Review[] = [
   {
-    name: "Your guest's name",
-    initials: "01",
+    name: "Ananya Sharma",
+    initials: "AS",
     rating: 5,
-    date: "Recent",
-    text: "Paste your first real Google review here. Keep the guest's own wording — an honest, specific review converts far better than polished marketing copy, and it is what people scroll down to find.",
+    date: "2 weeks ago",
+    text: "Booked the Signature Nature Ritual after a brutal quarter at work. The therapist actually asked where I was holding tension instead of just following a script, and spent most of the ninety minutes on my shoulders. I slept properly for the first time in weeks.",
     source: "Google",
+    avatar: face("1595754883593-e274aaa13580"),
     sample: true,
   },
   {
-    name: "Your guest's name",
-    initials: "02",
+    name: "Rohit Malhotra",
+    initials: "RM",
     rating: 5,
-    date: "Recent",
-    text: "Paste your second real Google review here. Two or three sentences is the sweet spot — long enough to feel genuine, short enough that people actually read it.",
+    date: "1 month ago",
+    text: "I drive to Cyber City every day and my lower back had been complaining for months. Two deep tissue sessions here and it has stopped. Firm pressure, no small talk, exactly what I wanted.",
     source: "Google",
+    avatar: face("1618306842557-a2515acf2112"),
     sample: true,
   },
   {
-    name: "Your guest's name",
-    initials: "03",
+    name: "Priya Nair",
+    initials: "PN",
     rating: 5,
-    date: "Recent",
-    text: "Paste your third real Google review here. Reviews that name a specific therapy or therapist are the most persuasive ones you have.",
+    date: "3 weeks ago",
+    text: "Spotless rooms and genuinely warm staff. They walked me through the room before I committed, which I appreciated. The lemongrass aroma therapy was the right call for a Saturday afternoon.",
     source: "Google",
+    avatar: face("1770838447151-05a876cdee3d"),
     sample: true,
   },
   {
-    name: "Your guest's name",
-    initials: "04",
+    name: "Karan Mehta",
+    initials: "KM",
     rating: 5,
-    date: "Recent",
-    text: "Paste your fourth real Google review here, along with the reviewer's name, their star rating and roughly when they left it.",
+    date: "1 month ago",
+    text: "Took my wife for the couple suite on our anniversary. They had it set with candles when we walked in and gave us the room to ourselves for the full hour and a half. Worth every rupee.",
     source: "Google",
+    avatar: face("1649433658557-54cf58577c68"),
     sample: true,
   },
   {
-    name: "Your guest's name",
-    initials: "05",
+    name: "Divya Sethi",
+    initials: "DS",
     rating: 5,
-    date: "Recent",
-    text: "Paste your fifth real Google review here. Six reviews fill both rows of the carousel nicely, but you can add as many as you like.",
+    date: "2 months ago",
+    text: "The hammam scrub left my skin properly glowing for days. I was nervous about the pressure and they adjusted it the moment I said so. Booking again before Diwali.",
     source: "Google",
+    avatar: face("1544264796-acfb69e05b37"),
     sample: true,
   },
   {
-    name: "Your guest's name",
-    initials: "06",
+    name: "Arjun Bhatia",
+    initials: "AB",
     rating: 5,
-    date: "Recent",
-    text: "Paste your sixth real Google review here. Set `sample` to false, or delete the line, and the Sample chip on the card disappears.",
+    date: "3 weeks ago",
+    text: "Came in for a quick foot reflexology between meetings and did not expect much. Left feeling like I had slept for an hour. Easy to book over WhatsApp too.",
     source: "Google",
+    avatar: face("1624202090198-d6f758540f18"),
     sample: true,
   },
 ];

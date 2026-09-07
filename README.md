@@ -70,18 +70,19 @@ Change a value there and it updates everywhere.
 
 ## ⚠️ Three things to do before going live
 
-### 1. Replace the placeholder reviews — `src/lib/reviews.ts`
+### 1. Replace the sample reviews — `src/lib/reviews.ts`
 
-The review carousel shows **placeholders**, each marked with a small "Sample"
-chip. Open your Google Business listing, copy each real review (name, stars,
-date, text) into the `reviews` array, and delete that entry's `sample: true`
-line — the chip disappears on its own. Each review also takes an optional
-`avatar` URL; set it and the card shows the reviewer's photograph in place of
-the initials badge.
+The carousel is filled with six **written-for-the-demo** testimonials and stock
+portraits, so a client can review the layout without reading lorem ipsum. Every
+card carries a "Sample" chip.
 
-They are left as obvious placeholders rather than invented testimonials on
-purpose: made-up reviews on a live business page are a real problem, and fake
-ones would also poison the review structured data Google reads from this file.
+To go live, replace each entry's `name`, `text`, `rating` and `date` with a real
+Google review, swap `avatar` for the reviewer's own photo (or delete the line
+for an initials badge), and remove `sample: true` — the chip goes with it.
+
+Please do swap them before launch. Published as-is they are invented customer
+testimonials, and they also feed the `Review` structured data Google reads from
+this file.
 
 Also update `site.rating` in `src/lib/site.ts` so the rating badge, the stats
 band and the structured data match your live listing.

@@ -47,7 +47,7 @@ export default function Experience() {
     <section
       id="experience"
       ref={ref}
-      className="scroll-mt-24 on-emerald relative overflow-hidden py-16 sm:py-24 lg:py-32"
+      className="scroll-mt-24 on-emerald relative hidden overflow-hidden py-16 sm:py-24 lg:block lg:py-32"
     >
       <div
         aria-hidden

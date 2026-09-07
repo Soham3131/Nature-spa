@@ -85,7 +85,7 @@ export default function Gallery() {
           <div
             ref={rail}
             onScroll={onRailScroll}
-            className="scene-3d flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 pb-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+            className="flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 pb-6 [perspective:900px] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
           >
             {gallery.map((shot, i) => (
               <SwipeCard key={shot.src} i={i} shot={shot} rail={railX} />
@@ -147,15 +147,18 @@ function SwipeCard({
     return (centre - view) / el.offsetWidth;
   });
 
-  const rotateY = useTransform(offset, [-1, 0, 1], [-16, 0, 16], { clamp: true });
-  const scale = useTransform(offset, [-1, 0, 1], [0.9, 1, 0.9], { clamp: true });
-  const z = useTransform(offset, [-1, 0, 1], [-60, 0, -60], { clamp: true });
+  const rotateY = useTransform(offset, [-1.1, 0, 1.1], [-34, 0, 34], { clamp: true });
+  const scale = useTransform(offset, [-1.1, 0, 1.1], [0.82, 1, 0.82], { clamp: true });
+  const z = useTransform(offset, [-1.1, 0, 1.1], [-150, 0, -150], { clamp: true });
+  const cardOpacity = useTransform(offset, [-1.3, 0, 1.3], [0.45, 1, 0.45], {
+    clamp: true,
+  });
 
   return (
     <motion.figure
       ref={ref}
-      style={{ rotateY, scale, z, transformStyle: "preserve-3d" }}
-      className="w-[78vw] shrink-0 snap-center overflow-hidden rounded-[1.4rem] card"
+      style={{ rotateY, scale, z, opacity: cardOpacity, transformStyle: "preserve-3d" }}
+      className="w-[74vw] shrink-0 snap-center overflow-hidden rounded-[1.4rem] card"
     >
       <div className="relative aspect-4/5 overflow-hidden">
         <SmartImage
