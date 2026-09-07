@@ -1,5 +1,8 @@
+"use client";
+
+import { useEffect, useRef, useState } from "react";
 import Reveal from "@/components/Reveal";
-import { numbers } from "@/lib/home1";
+import { numbers, type Stat } from "@/lib/home1";
 import { Eyebrow } from "./ui";
 
 export default function Numbers() {
@@ -32,9 +35,7 @@ export default function Numbers() {
               >
                 <dt className="sr-only">{n.label}</dt>
                 <dd>
-                  <span className="display block text-[clamp(2rem,4.6vw,2.9rem)] leading-none text-forest">
-                    {n.value}
-                  </span>
+                  <Counter stat={n} />
                   <span className="mt-3 block text-[10px] uppercase tracking-[0.22em] text-muted sm:text-[11px]">
                     {n.label}
                   </span>
@@ -45,5 +46,68 @@ export default function Numbers() {
         </Reveal>
       </div>
     </section>
+  );
+}
+
+/**
+ * Counts up the first time the figure scrolls into view, on the same curve and
+ * duration as the Stats band on the home page so the two read as one site.
+ */
+function Counter({ stat }: { stat: Stat }) {
+  const { value, suffix = "", decimals = 0, gap = false } = stat;
+  const ref = useRef<HTMLSpanElement>(null);
+  const [n, setN] = useState(0);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+
+    let raf = 0;
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) return;
+        io.disconnect();
+
+        // Reduced motion: land on the final value instead of counting up.
+        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+          setN(value);
+          return;
+        }
+
+        const start = performance.now();
+        const dur = 1700;
+        const tick = (now: number) => {
+          const p = Math.min(1, (now - start) / dur);
+          setN(value * (1 - Math.pow(1 - p, 4)));
+          if (p < 1) raf = requestAnimationFrame(tick);
+        };
+        raf = requestAnimationFrame(tick);
+      },
+      { threshold: 0.4 },
+    );
+
+    io.observe(el);
+    return () => {
+      io.disconnect();
+      cancelAnimationFrame(raf);
+    };
+  }, [value]);
+
+  const shown =
+    decimals > 0 ? n.toFixed(decimals) : Math.round(n).toLocaleString("en-IN");
+
+  return (
+    <span
+      ref={ref}
+      className="display block text-[clamp(2rem,4.6vw,2.9rem)] leading-none text-forest"
+    >
+      {shown}
+      {suffix && (
+        <span className="text-forest/60">
+          {gap ? " " : ""}
+          {suffix}
+        </span>
+      )}
+    </span>
   );
 }

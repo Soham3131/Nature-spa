@@ -21,6 +21,13 @@ export const site = {
     facebook: "https://www.facebook.com/profile.php?id=61593944502619",
     google: "https://share.google/0paYzNDs4YWZt8Bs0",
   },
+  /**
+   * The walkthrough video on our Google Business Profile. Google does not
+   * publish a permanent direct URL for profile videos — this short link opens
+   * the clip in the Maps photo viewer, which is as close as it gets. Put the
+   * film on YouTube if we ever want it playing inside the page.
+   */
+  videoTour: "https://maps.app.goo.gl/SFszxfCt4G1ymDnC7?g_st=ac",
   // Google rating shown on the site — update to match your live listing
   rating: { value: 4.9, count: 180 },
 } as const;

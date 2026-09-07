@@ -2,6 +2,7 @@ import { Play } from "lucide-react";
 import Reveal from "@/components/Reveal";
 import SmartImage from "@/components/SmartImage";
 import { art } from "@/lib/home1";
+import { site } from "@/lib/site";
 import { Eyebrow, Pill } from "./ui";
 
 /**
@@ -59,7 +60,9 @@ export default function Experience1() {
 
           <Reveal delay={160}>
             <a
-              href="#rituals"
+              href={site.videoTour}
+              target="_blank"
+              rel="noopener noreferrer"
               className="group flex items-center gap-4 text-ivory/85 transition-colors hover:text-ivory"
             >
               <span className="relative grid h-14 w-14 shrink-0 place-items-center rounded-full border border-ivory/35 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:border-ivory group-hover:bg-ivory/12 sm:h-16 sm:w-16">

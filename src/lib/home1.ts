@@ -202,12 +202,22 @@ export const art = {
  *  Numbers — kept in step with site.ts / services.ts
  * ------------------------------------------------------------------ */
 
-export const numbers = [
-  { value: `${site.rating.value}`, label: "Rated on Google" },
-  { value: `${site.rating.count}+`, label: "Guest reviews" },
-  { value: `${services.length}`, label: "Signature therapies" },
-  { value: "7 Days", label: "Open every week" },
-] as const;
+export type Stat = {
+  /** counted up to, so it has to stay a number */
+  value: number;
+  label: string;
+  suffix?: string;
+  decimals?: number;
+  /** put a space between the figure and its suffix */
+  gap?: boolean;
+};
+
+export const numbers: Stat[] = [
+  { value: site.rating.value, decimals: 1, label: "Rated on Google" },
+  { value: site.rating.count, suffix: "+", label: "Guest reviews" },
+  { value: services.length, label: "Signature therapies" },
+  { value: 7, suffix: "Days", gap: true, label: "Open every week" },
+];
 
 /** The four promises under "Bring the ritual home". */
 export const promises = [

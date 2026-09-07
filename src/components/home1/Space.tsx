@@ -24,7 +24,9 @@ export default function Space() {
             </p>
 
             <div className="mt-9">
-              <TextLink href={site.socials.google}>Take a virtual tour</TextLink>
+              <TextLink href={site.socials.google} external>
+                Take a virtual tour
+              </TextLink>
             </div>
           </Reveal>
 

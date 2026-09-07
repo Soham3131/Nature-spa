@@ -78,20 +78,21 @@ export function TextLink({
   href,
   children,
   tone = "dark",
+  external = false,
   className = "",
 }: {
   href: string;
   children: ReactNode;
   tone?: "dark" | "light";
+  external?: boolean;
   className?: string;
 }) {
-  return (
-    <Link
-      href={href}
-      className={`group inline-flex items-center gap-2.5 text-[11px] uppercase tracking-[0.22em] transition-colors duration-500 ${
-        tone === "light" ? "text-ivory/80 hover:text-ivory" : "text-forest/75 hover:text-forest"
-      } ${className}`}
-    >
+  const classes = `group inline-flex items-center gap-2.5 text-[11px] uppercase tracking-[0.22em] transition-colors duration-500 ${
+    tone === "light" ? "text-ivory/80 hover:text-ivory" : "text-forest/75 hover:text-forest"
+  } ${className}`;
+
+  const inner = (
+    <>
       <span className="relative">
         {children}
         <span
@@ -105,6 +106,19 @@ export function TextLink({
         strokeWidth={1.6}
         className="transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-x-1"
       />
+    </>
+  );
+
+  if (external) {
+    return (
+      <a href={href} target="_blank" rel="noopener noreferrer" className={classes}>
+        {inner}
+      </a>
+    );
+  }
+  return (
+    <Link href={href} className={classes}>
+      {inner}
     </Link>
   );
 }

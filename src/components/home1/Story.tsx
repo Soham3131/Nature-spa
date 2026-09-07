@@ -34,7 +34,9 @@ export default function Story() {
               <span className="grid h-9 w-9 place-items-center rounded-full bg-forest/8 text-leaf">
                 <Leaf size={15} strokeWidth={1.5} />
               </span>
-              <TextLink href="#experience">Our Story</TextLink>
+              <TextLink href={site.videoTour} external>
+                Our Story
+              </TextLink>
             </div>
           </Reveal>
 
