@@ -7,11 +7,18 @@ export default function SmoothScroll() {
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
+    /**
+     * `lerp` rather than `duration`: a duration ramp restarts on every wheel
+     * tick and reads as lag, while a lerp keeps a constant pull toward the real
+     * scroll position, so the page feels attached to the wheel. Touch is left
+     * native — phones already scroll smoothly and intercepting it only adds
+     * latency.
+     */
     const lenis = new Lenis({
-      duration: 1.15,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      lerp: 0.11,
+      wheelMultiplier: 1,
       smoothWheel: true,
-      touchMultiplier: 1.6,
+      syncTouch: false,
     });
 
     let raf = 0;

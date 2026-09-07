@@ -31,13 +31,25 @@ toward it and skips the seek entirely when the gap is under one frame.
 If the browser cannot decode the file, or the visitor has reduced motion turned
 on, `public/hero-poster.jpg` is shown instead, so the hero is never blank.
 
-**Worth doing:** the clip is 3840×2160 (4K) at 5.2 MB. Scrubbing a 4K H.264
-file is heavy on older phones. Exporting a 1920×1080 version at the same length
-would cut the download several times over and scrub far more smoothly — drop it
-in as `public/spaa.mp4` and nothing else needs to change.
+The clip you supplied is 3840×2160 at 5.2 MB, which is far more than a hero
+panel needs and slow to seek. `public/spaa-720.webm` is a 1280×720 VP9 version
+of it at 0.38 MB — thirteen times smaller, and roughly twice as fast to seek,
+which is what scrubbing actually costs. The browser picks it first and falls
+back to the original mp4 only if it cannot decode VP9.
 
-To swap the clip entirely, replace that file and regenerate the poster from any
-frame you like.
+**Replacing the clip:** drop the new file in as `public/spaa.mp4`. Ideally also
+produce a 720p WebM alongside it (`ffmpeg -i spaa.mp4 -vf scale=1280:-2 -c:v
+libvpx-vp9 -b:v 2.6M -an spaa-720.webm`) and refresh `public/hero-poster.jpg`
+from any frame you like. If you only replace the mp4, the site still works — it
+will just use the heavier file.
+
+**Why it is not a boxed rectangle:** the clip was shot on white, and the hero
+composites it with `mix-blend-mode: multiply`, so white drops out and the
+subject sits directly on the page. Two things switch that off if you are not
+careful, and both cost an afternoon to find: a `transform` on the blended
+element itself (put the blend on a wrapper and animate a child instead), and
+any `perspective` / `transform-style: preserve-3d` ancestor between the film
+and the backdrop, which puts it in a separate 3D rendering context.
 
 ## Colours
 
@@ -137,8 +149,25 @@ scripts/scan-photos.mjs
 
 Beyond the hero: a horizontal gallery that scrolls sideways as you scroll down,
 pointer-tracked 3D card tilt with a specular glare (`TiltCard`), parallax photo
-stacks, counters that count up when they enter view, and Lenis smooth scrolling.
-Everything respects `prefers-reduced-motion`.
+stacks, drifting botanicals at three depths behind the hero, counters that count
+up when they enter view, and Lenis smooth scrolling. Everything respects
+`prefers-reduced-motion`.
+
+### Keeping the scroll smooth
+
+Three rules this codebase follows, because each of them was measurably costing
+frames:
+
+- **No `backdrop-filter` on anything that scrolls.** Blurring what is behind an
+  element is the most expensive thing a browser composites. Only the nav keeps
+  it, where the area is small.
+- **No `blur()` on something that also moves.** A blurred surface has to be
+  re-rasterised every frame it changes. The hero's coloured light is plain
+  radial gradients, which are already soft and cost nothing to move.
+- **Scroll sets a target, never a value.** The hero video eases toward its
+  target time in a rAF loop and skips seeks under one frame, rather than
+  seeking on every scroll event; the loop parks itself when the hero is off
+  screen.
 
 ### Contact form → WhatsApp
 

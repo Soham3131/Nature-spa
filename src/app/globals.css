@@ -6,28 +6,28 @@
  * ------------------------------------------------------------------ */
 @theme {
   /* surfaces */
-  --color-ivory: #fbfaf5;
-  --color-sand: #f1eee1;
+  --color-ivory: #fbf8f0;
+  --color-sand: #f0e9d9;
   --color-paper: #ffffff;
-  --color-stone: #14201a;
-  --color-stone-2: #1d2b23;
+  --color-emerald: #0f2c17;
+  --color-emerald-2: #17381d;
 
   /* greens */
-  --color-forest: #1f4a22;
-  --color-forest-2: #35702f;
-  --color-leaf: #57a63c;
-  --color-lime: #8fc24a;
-  --color-mist: #dfe9d5;
+  --color-forest: #17381a;
+  --color-forest-2: #2c6b2f;
+  --color-leaf: #4e9e36;
+  --color-lime: #8cc63f;
+  --color-mist: #dde9d0;
 
   /* warm accents */
-  --color-bronze: #a17a4e;
-  --color-bronze-lt: #c2a06a;
-  --color-clay: #c4705a;
-  --color-butter: #f2c744;
+  --color-bronze: #a8783f;
+  --color-bronze-lt: #dcc08a;
+  --color-clay: #bc6a52;
+  --color-butter: #edb93c;
 
   /* text */
-  --color-body: #47564a;
-  --color-muted: #6e7d6c;
+  --color-body: #3f4f42;
+  --color-muted: #6a7a68;
 
   --font-display: var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
   --font-sans: var(--font-jost), ui-sans-serif, system-ui, sans-serif;
@@ -102,15 +102,33 @@ body {
   color: var(--color-bronze);
 }
 
-/** Gradient wordmark treatment — forest → leaf → forest */
+/** Gradient wordmark treatment — deep green through leaf and back */
 @utility accent-text {
   background: linear-gradient(
     100deg,
-    #1f4a22 0%,
-    #35702f 26%,
-    #6fbb42 50%,
-    #35702f 74%,
-    #1f4a22 100%
+    #17381a 0%,
+    #2c6b2f 24%,
+    #6bb63c 48%,
+    #a8783f 66%,
+    #2c6b2f 84%,
+    #17381a 100%
+  );
+  background-size: 220% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: leafShift 9s linear infinite;
+}
+
+/** Same treatment for dark bands, where the deep greens would vanish. */
+@utility accent-text-light {
+  background: linear-gradient(
+    100deg,
+    #8cc63f 0%,
+    #dcc08a 30%,
+    #fdfbf4 50%,
+    #dcc08a 70%,
+    #8cc63f 100%
   );
   background-size: 220% auto;
   -webkit-background-clip: text;
@@ -137,29 +155,45 @@ body {
   will-change: transform;
 }
 
-/** Frosted card on a light ground */
+/**
+ * Cards deliberately avoid backdrop-filter. Blurring what is behind an element
+ * is the most expensive thing a browser composites while scrolling, and these
+ * sit on a flat ground where it buys nothing. Only the nav keeps it, where the
+ * blurred area is small and the payoff is real.
+ */
 @utility glass {
   background: linear-gradient(
     150deg,
-    rgba(255, 255, 255, 0.92) 0%,
-    rgba(255, 255, 255, 0.72) 55%,
-    rgba(223, 233, 213, 0.6) 100%
+    rgba(255, 255, 255, 0.96) 0%,
+    rgba(253, 251, 245, 0.9) 55%,
+    rgba(221, 233, 208, 0.72) 100%
   );
-  backdrop-filter: blur(14px) saturate(120%);
-  -webkit-backdrop-filter: blur(14px) saturate(120%);
-  border: 1px solid rgba(31, 74, 34, 0.14);
+  border: 1px solid rgba(23, 56, 26, 0.12);
   box-shadow:
-    0 1px 2px rgba(31, 74, 34, 0.05),
-    0 18px 40px -24px rgba(31, 74, 34, 0.28);
+    0 1px 2px rgba(23, 56, 26, 0.05),
+    0 20px 44px -26px rgba(23, 56, 26, 0.3);
 }
 
 /** Solid card, for dense content */
 @utility card {
   background: var(--color-paper);
-  border: 1px solid rgba(31, 74, 34, 0.1);
+  border: 1px solid rgba(23, 56, 26, 0.1);
   box-shadow:
-    0 1px 2px rgba(31, 74, 34, 0.04),
-    0 20px 44px -28px rgba(31, 74, 34, 0.3);
+    0 1px 2px rgba(23, 56, 26, 0.04),
+    0 22px 46px -28px rgba(23, 56, 26, 0.32);
+}
+
+/** The one place a live blur earns its cost. */
+@utility nav-glass {
+  background: rgba(251, 248, 240, 0.82);
+  backdrop-filter: blur(16px) saturate(130%);
+  -webkit-backdrop-filter: blur(16px) saturate(130%);
+}
+
+/** Deep band, used to break up the light sections. */
+@utility on-emerald {
+  background: var(--color-emerald);
+  color: var(--color-mist);
 }
 
 @utility hairline {
@@ -202,6 +236,19 @@ body {
   }
 }
 
+@keyframes meshDrift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  33% {
+    transform: translate3d(3%, -4%, 0) scale(1.08);
+  }
+  66% {
+    transform: translate3d(-3%, 3%, 0) scale(0.96);
+  }
+}
+
 @keyframes drift {
   0% {
     transform: translate3d(0, 0, 0) rotate(0deg);
@@ -209,6 +256,10 @@ body {
   100% {
     transform: translate3d(0, -120px, 0) rotate(28deg);
   }
+}
+
+.animate-mesh {
+  animation: meshDrift 26s ease-in-out infinite;
 }
 
 .animate-floaty {
