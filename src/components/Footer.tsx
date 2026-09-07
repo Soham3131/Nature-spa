@@ -21,12 +21,18 @@ export default function Footer() {
       <div className="relative mx-auto max-w-[1400px] px-5 py-20 sm:px-8">
         <div className="grid gap-12 lg:grid-cols-[1.4fr_1fr_1fr_1.2fr]">
           <div>
+            {/*
+              The card version of the mark, not the transparent one — the
+              transparent logo is deep green line art and all but vanishes
+              against this band.
+            */}
             <Image
-              src="/logo.png"
+              src="/logo-card.png"
               alt={site.name}
-              width={168}
-              height={154}
-              className="h-16 w-auto brightness-125"
+              width={320}
+              height={320}
+              sizes="160px"
+              className="h-auto w-32 rounded-2xl shadow-[0_18px_40px_-24px_rgba(0,0,0,0.7)] sm:w-36"
             />
 
             <p className="mt-5 max-w-sm text-sm leading-relaxed text-ivory/70">

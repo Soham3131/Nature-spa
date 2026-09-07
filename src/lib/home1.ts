@@ -48,6 +48,18 @@ const ritualArt = [
     tone: "linear-gradient(140deg,#241d16,#7d6849 48%,#e0cda4)",
     alt: "Warm herbal compresses pressed along the back",
   },
+  {
+    slug: "thai-dry-massage",
+    image: u("1749131871347-6d211039ac3e"),
+    tone: "linear-gradient(140deg,#241a15,#7a5b46 48%,#dfc4a8)",
+    alt: "A leg raised into a guided stretch during a Thai dry massage",
+  },
+  {
+    slug: "couple-spa",
+    image: u("1696841212541-449ca29397cc", 1600),
+    tone: "linear-gradient(140deg,#1e1712,#6f5540 48%,#d9bf9c)",
+    alt: "Warm stones resting along the back in a private candlelit suite",
+  },
 ] as const;
 
 export type Ritual = {

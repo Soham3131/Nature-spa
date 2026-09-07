@@ -109,12 +109,23 @@ export function TextLink({
   );
 }
 
-/** Circular arrow badge that sits in the corner of a ritual card. */
-export function ArrowBadge({ className = "" }: { className?: string }) {
+/**
+ * Circular arrow badge that sits in the corner of a ritual card. The size lives
+ * in `sizeClass` rather than the base string, because two competing `h-*`
+ * utilities would be settled by stylesheet order, not by the order they are
+ * written here.
+ */
+export function ArrowBadge({
+  sizeClass = "h-9 w-9",
+  className = "",
+}: {
+  sizeClass?: string;
+  className?: string;
+}) {
   return (
     <span
       aria-hidden
-      className={`grid h-9 w-9 shrink-0 place-items-center rounded-full border border-forest/18 text-forest/70 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:border-forest group-hover:bg-forest group-hover:text-ivory ${className}`}
+      className={`grid shrink-0 place-items-center rounded-full border border-forest/18 text-forest/70 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:border-forest group-hover:bg-forest group-hover:text-ivory ${sizeClass} ${className}`}
     >
       <ArrowRight
         size={14}
