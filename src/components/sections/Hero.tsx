@@ -37,7 +37,6 @@ export default function Hero() {
     restDelta: 0.0008,
   });
 
-  const copyY = useTransform(p, [0, 1], [0, -26]);
   const cueOpacity = useTransform(p, [0, 0.12], [1, 0], { clamp: true });
 
   /* the pour rail — the one piece of chrome that tracks progress */
@@ -75,37 +74,15 @@ export default function Hero() {
             ]}
             poster="/hero-poster.jpg"
             className="h-full w-full"
-            mediaClassName="object-contain object-bottom scale-[1.7] origin-bottom sm:scale-[1.3] lg:scale-[1.06]"
-            mask="radial-gradient(78% 66% at 54% 80%, #000 48%, transparent 92%)"
+            mediaClassName="object-contain object-bottom scale-[1.95] origin-bottom sm:scale-[1.4] lg:scale-[1.06]"
+            mask="linear-gradient(90deg, transparent 0%, #000 14%, #000 92%, transparent 100%)"
           />
         </div>
 
-        {/* a whisper of warmth under the subject, so it sits on the page */}
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-1/3 bg-[linear-gradient(180deg,transparent,rgba(245,243,232,0.85))]"
-        />
-
         {/* ------------------------------ copy ------------------------------ */}
         <div className="relative z-20 mx-auto flex h-full w-full max-w-[1440px] flex-col px-5 pb-6 pt-[calc(var(--nav-h)+0.5rem)] sm:px-8 lg:justify-center lg:pt-[var(--nav-h)]">
-          <motion.div style={{ y: copyY }} className="text-center lg:max-w-xl lg:text-left">
-            <motion.div
-              initial={{ opacity: 0, y: 14 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-              className="mx-auto flex w-fit items-center gap-2.5 rounded-full border border-forest/12 bg-paper/90 px-3.5 py-1.5 shadow-[0_10px_24px_-16px_rgba(23,56,26,0.5)] sm:px-4 sm:py-2 lg:mx-0"
-            >
-              <span className="flex gap-0.5">
-                {Array.from({ length: 5 }).map((_, i) => (
-                  <Star key={i} size={10} className="fill-butter text-butter" />
-                ))}
-              </span>
-              <span className="text-[9.5px] uppercase tracking-[0.22em] text-body sm:text-[10px] sm:tracking-[0.24em]">
-                {site.rating.value} · Loved in Gurugram
-              </span>
-            </motion.div>
-
-            <h1 className="mt-4 sm:mt-6">
+          <div className="text-center lg:max-w-xl lg:text-left">
+            <h1>
               <span className="sr-only">
                 {site.name} — {site.tagline}
               </span>
@@ -176,25 +153,19 @@ export default function Hero() {
                 <Caption key={c.text} p={p} at={c.at} text={c.text} />
               ))}
             </div>
-          </motion.div>
+          </div>
 
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.95, ease: [0.16, 1, 0.3, 1] }}
-            className="mt-10 hidden w-full max-w-3xl items-center justify-between gap-6 rounded-2xl glass px-7 py-4 lg:flex"
+            className="mt-10 hidden w-fit items-center gap-6 rounded-2xl glass px-6 py-4 lg:flex"
           >
             <Fact icon={MapPin} label="Where" value={site.address.city} />
             <span className="h-8 w-px bg-forest/12" />
             <Fact icon={Clock} label="Open" value="10:00 AM – 9:30 PM" />
             <span className="h-8 w-px bg-forest/12" />
             <Fact icon={Star} label="Rated" value={`${site.rating.value} on Google`} />
-            <a
-              href={`tel:+${site.phoneRaw}`}
-              className="ml-auto text-[13px] tracking-wide text-forest-2 transition-colors hover:text-leaf"
-            >
-              {site.phoneDisplay}
-            </a>
           </motion.div>
         </div>
 

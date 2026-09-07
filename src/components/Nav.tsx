@@ -39,7 +39,7 @@ export default function Nav() {
       <header
         className={`fixed inset-x-0 top-0 z-60 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${
           solid
-            ? "nav-glass border-b border-forest/8 py-2"
+            ? "nav-solid py-2"
             : "border-b border-transparent py-4"
         }`}
       >

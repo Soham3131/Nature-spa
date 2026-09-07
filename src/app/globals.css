@@ -191,11 +191,16 @@ body {
     0 22px 46px -28px rgba(23, 56, 26, 0.32);
 }
 
-/** The one place a live blur earns its cost. */
-@utility nav-glass {
-  background: rgba(251, 248, 240, 0.82);
-  backdrop-filter: blur(16px) saturate(130%);
-  -webkit-backdrop-filter: blur(16px) saturate(130%);
+/**
+ * A solid bar rather than a live blur. Frosted glass over a busy hero read as
+ * smeared rather than premium, and backdrop-filter is the most expensive thing
+ * a browser composites while scrolling — this costs nothing and looks cleaner.
+ */
+@utility nav-solid {
+  background: #f8f5ec;
+  box-shadow:
+    0 1px 0 rgba(23, 56, 26, 0.07),
+    0 10px 26px -20px rgba(23, 56, 26, 0.45);
 }
 
 /** Deep band, used to break up the light sections. */
