@@ -65,7 +65,7 @@ export default function Hero() {
           it is held to the right two thirds so the headline always has clear
           ground under it.
         */}
-        <div className="absolute inset-y-0 right-0 z-10 w-full mix-blend-multiply lg:bottom-[7%] lg:w-[64%]">
+        <div className="absolute inset-x-0 bottom-0 z-10 h-[38svh] mix-blend-multiply sm:h-[46svh] lg:inset-y-0 lg:bottom-[7%] lg:left-auto lg:right-0 lg:h-auto lg:w-[64%]">
           <ScrollVideo
             p={p}
             sources={[
@@ -74,13 +74,13 @@ export default function Hero() {
             ]}
             poster="/hero-poster.jpg"
             className="h-full w-full"
-            mediaClassName="object-contain object-bottom scale-[1.95] origin-bottom sm:scale-[1.4] lg:scale-[1.06]"
-            mask="linear-gradient(90deg, transparent 0%, #000 14%, #000 92%, transparent 100%)"
+            mediaClassName="object-cover object-[52%_100%] lg:object-contain lg:object-bottom lg:scale-[1.06] lg:origin-bottom"
+            mask="none"
           />
         </div>
 
         {/* ------------------------------ copy ------------------------------ */}
-        <div className="relative z-20 mx-auto flex h-full w-full max-w-[1440px] flex-col px-5 pb-6 pt-[calc(var(--nav-h)+0.5rem)] sm:px-8 lg:justify-center lg:pt-[var(--nav-h)]">
+        <div className="relative z-20 mx-auto flex h-full w-full max-w-[1440px] flex-col justify-center px-5 pb-[38svh] pt-[calc(var(--nav-h)+0.5rem)] sm:px-8 sm:pb-[46svh] lg:pb-6 lg:pt-[var(--nav-h)]">
           <div className="text-center lg:max-w-xl lg:text-left">
             <h1>
               <span className="sr-only">
@@ -128,13 +128,13 @@ export default function Hero() {
               initial={{ opacity: 0, y: 18 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.72, ease: [0.16, 1, 0.3, 1] }}
-              className="mt-5 flex flex-col items-center gap-2.5 sm:mt-8 sm:flex-row sm:justify-center sm:gap-3 lg:justify-start"
+              className="mt-5 grid grid-cols-2 gap-2.5 sm:mt-8 sm:flex sm:justify-center sm:gap-3 lg:justify-start"
             >
               <a
                 href={whatsappLink(defaultWhatsAppMessage)}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group relative w-full overflow-hidden rounded-full bg-forest px-8 py-3 text-[11px] uppercase tracking-[0.2em] text-ivory shadow-[0_18px_40px_-16px_rgba(23,56,26,0.8)] transition-transform duration-500 hover:scale-[1.03] sm:w-auto sm:py-4 sm:text-[12px] sm:tracking-[0.22em]"
+                className="group relative overflow-hidden rounded-full bg-forest px-4 py-3 text-center text-[10px] uppercase leading-tight tracking-[0.14em] text-ivory shadow-[0_18px_40px_-16px_rgba(23,56,26,0.8)] transition-transform duration-500 hover:scale-[1.03] sm:w-auto sm:px-8 sm:py-4 sm:text-[12px] sm:tracking-[0.22em]"
               >
                 <span className="absolute inset-0 -translate-x-full bg-[linear-gradient(90deg,transparent,rgba(140,198,63,0.55),transparent)] transition-transform duration-[900ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-x-full" />
                 <span className="relative">Book on WhatsApp</span>
@@ -142,7 +142,7 @@ export default function Hero() {
 
               <a
                 href="#services"
-                className="w-full rounded-full border border-forest/20 bg-paper/60 px-8 py-3 text-[11px] uppercase tracking-[0.2em] text-forest transition-all duration-500 hover:border-forest/45 hover:bg-paper sm:w-auto sm:py-4 sm:text-[12px] sm:tracking-[0.22em]"
+                className="rounded-full border border-forest/20 bg-paper/60 px-4 py-3 text-center text-[10px] uppercase leading-tight tracking-[0.14em] text-forest transition-all duration-500 hover:border-forest/45 hover:bg-paper sm:w-auto sm:px-8 sm:py-4 sm:text-[12px] sm:tracking-[0.22em]"
               >
                 View Therapies
               </a>

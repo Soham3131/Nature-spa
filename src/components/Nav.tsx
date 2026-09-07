@@ -55,11 +55,11 @@ export default function Nav() {
                 solid ? "h-11" : "h-14"
               }`}
             />
-            <span className="hidden flex-col leading-none sm:flex">
-              <span className="display text-[1.3rem] tracking-wide">
+            <span className="flex flex-col leading-none">
+              <span className="display text-[1.05rem] tracking-wide sm:text-[1.3rem]">
                 The Nature <span className="accent-text">Spa</span>
               </span>
-              <span className="mt-1.5 text-[8.5px] uppercase tracking-[0.34em] text-bronze">
+              <span className="mt-1 text-[7px] uppercase tracking-[0.26em] text-bronze sm:mt-1.5 sm:text-[8.5px] sm:tracking-[0.34em]">
                 Rejuvenate Naturally
               </span>
             </span>
