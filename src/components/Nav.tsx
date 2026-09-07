@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { Menu, X, Phone } from "lucide-react";
@@ -9,7 +10,7 @@ import { site, whatsappLink, defaultWhatsAppMessage } from "@/lib/site";
 const links = [
   { href: "/#experience", label: "Experience" },
   { href: "/#services", label: "Therapies" },
-  { href: "/#gallery", label: "Spa" },
+  { href: "/#gallery", label: "Our Spa" },
   { href: "/#reviews", label: "Reviews" },
   { href: "/blog", label: "Journal" },
   { href: "/#contact", label: "Contact" },
@@ -38,32 +39,41 @@ export default function Nav() {
       <header
         className={`fixed inset-x-0 top-0 z-60 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${
           solid
-            ? "border-b border-gold-lt/10 bg-ink/80 backdrop-blur-xl py-3"
-            : "border-b border-transparent py-5"
+            ? "border-b border-forest/8 bg-ivory/85 py-2 backdrop-blur-xl"
+            : "border-b border-transparent py-4"
         }`}
       >
         <nav className="mx-auto flex max-w-[1400px] items-center justify-between gap-6 px-5 sm:px-8">
-          <Link href="/" className="group flex items-center gap-3" aria-label={site.name}>
-            <Logo />
-            <span className="flex flex-col leading-none">
-              <span className="display text-[1.35rem] tracking-wide text-cream">
-                The Nature <span className="gold-text">Spa</span>
+          <Link href="/" className="flex items-center gap-3" aria-label={site.name}>
+            <Image
+              src="/logo.png"
+              alt=""
+              width={132}
+              height={121}
+              priority
+              className={`w-auto transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+                solid ? "h-11" : "h-14"
+              }`}
+            />
+            <span className="hidden flex-col leading-none sm:flex">
+              <span className="display text-[1.3rem] tracking-wide">
+                The Nature <span className="accent-text">Spa</span>
               </span>
-              <span className="mt-1 text-[9px] uppercase tracking-[0.34em] text-cream-dim/70">
-                Gurugram
+              <span className="mt-1.5 text-[8.5px] uppercase tracking-[0.34em] text-bronze">
+                Rejuvenate Naturally
               </span>
             </span>
           </Link>
 
-          <ul className="hidden items-center gap-8 lg:flex">
+          <ul className="hidden items-center gap-7 lg:flex">
             {links.map((l) => (
               <li key={l.href}>
                 <Link
                   href={l.href}
-                  className="group relative text-[13px] uppercase tracking-[0.18em] text-cream/75 transition-colors hover:text-cream"
+                  className="group relative text-[12.5px] uppercase tracking-[0.16em] text-body transition-colors hover:text-forest"
                 >
                   {l.label}
-                  <span className="absolute -bottom-1.5 left-0 h-px w-0 bg-gradient-to-r from-gold-dk to-gold-lt transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:w-full" />
+                  <span className="absolute -bottom-1.5 left-0 h-px w-0 bg-leaf transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:w-full" />
                 </Link>
               </li>
             ))}
@@ -72,7 +82,7 @@ export default function Nav() {
           <div className="flex items-center gap-3">
             <a
               href={`tel:+${site.phoneRaw}`}
-              className="hidden items-center gap-2 text-[13px] tracking-wide text-cream/75 transition-colors hover:text-gold md:flex"
+              className="hidden items-center gap-2 text-[13px] tracking-wide text-body transition-colors hover:text-forest md:flex"
             >
               <Phone size={14} strokeWidth={1.6} />
               {site.phoneDisplay}
@@ -82,16 +92,16 @@ export default function Nav() {
               href={whatsappLink(defaultWhatsAppMessage)}
               target="_blank"
               rel="noopener noreferrer"
-              className="group relative hidden overflow-hidden rounded-full border border-gold-lt/40 px-5 py-2.5 text-[12px] uppercase tracking-[0.2em] text-cream transition-colors duration-500 hover:text-ink sm:block"
+              className="group relative hidden overflow-hidden rounded-full bg-forest px-5 py-2.5 text-[11.5px] uppercase tracking-[0.18em] text-ivory transition-transform duration-500 hover:scale-[1.04] sm:block"
             >
-              <span className="absolute inset-0 -translate-y-full bg-gradient-to-br from-gold-lt to-gold transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-y-0" />
+              <span className="absolute inset-0 -translate-x-full bg-lime/40 transition-transform duration-[900ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-x-full" />
               <span className="relative">Book Now</span>
             </a>
 
             <button
               onClick={() => setOpen(true)}
               aria-label="Open menu"
-              className="grid h-10 w-10 place-items-center rounded-full border border-gold-lt/25 text-cream transition-colors hover:border-gold-lt/60 lg:hidden"
+              className="grid h-10 w-10 place-items-center rounded-full border border-forest/15 text-forest transition-colors hover:border-forest/40 lg:hidden"
             >
               <Menu size={18} strokeWidth={1.5} />
             </button>
@@ -106,34 +116,45 @@ export default function Nav() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.35 }}
-            className="fixed inset-0 z-70 bg-ink/97 backdrop-blur-2xl lg:hidden"
+            className="fixed inset-0 z-70 bg-ivory lg:hidden"
           >
-            <div className="flex items-center justify-between px-5 py-6 sm:px-8">
-              <span className="display text-[1.35rem] text-cream">
-                The Nature <span className="gold-text">Spa</span>
-              </span>
+            <div
+              aria-hidden
+              className="pointer-events-none absolute inset-0"
+              style={{
+                background:
+                  "radial-gradient(60% 40% at 90% 8%, rgba(143,194,74,0.22), transparent 70%)",
+              }}
+            />
+
+            <div className="relative flex items-center justify-between px-5 py-5 sm:px-8">
+              <Image src="/logo.png" alt="" width={120} height={110} className="h-12 w-auto" />
               <button
                 onClick={() => setOpen(false)}
                 aria-label="Close menu"
-                className="grid h-10 w-10 place-items-center rounded-full border border-gold-lt/25 text-cream"
+                className="grid h-10 w-10 place-items-center rounded-full border border-forest/15 text-forest"
               >
                 <X size={18} strokeWidth={1.5} />
               </button>
             </div>
 
-            <ul className="mt-6 flex flex-col px-5 sm:px-8">
+            <ul className="relative mt-4 flex flex-col px-5 sm:px-8">
               {links.map((l, i) => (
                 <motion.li
                   key={l.href}
-                  initial={{ opacity: 0, y: 24 }}
+                  initial={{ opacity: 0, y: 22 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.06 * i + 0.08, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                  className="border-b border-cream/8"
+                  transition={{
+                    delay: 0.05 * i + 0.06,
+                    duration: 0.55,
+                    ease: [0.16, 1, 0.3, 1],
+                  }}
+                  className="border-b border-forest/8"
                 >
                   <Link
                     href={l.href}
                     onClick={() => setOpen(false)}
-                    className="block py-5 display text-4xl text-cream/90"
+                    className="display block py-4 text-[2.1rem]"
                   >
                     {l.label}
                   </Link>
@@ -141,18 +162,18 @@ export default function Nav() {
               ))}
             </ul>
 
-            <div className="mt-10 flex flex-col gap-3 px-5 sm:px-8">
+            <div className="relative mt-8 flex flex-col gap-3 px-5 sm:px-8">
               <a
                 href={whatsappLink(defaultWhatsAppMessage)}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="rounded-full bg-gradient-to-br from-gold-lt to-gold px-6 py-4 text-center text-[12px] uppercase tracking-[0.24em] text-ink"
+                className="rounded-full bg-forest px-6 py-4 text-center text-[12px] uppercase tracking-[0.22em] text-ivory"
               >
                 Book on WhatsApp
               </a>
               <a
                 href={`tel:+${site.phoneRaw}`}
-                className="rounded-full border border-gold-lt/30 px-6 py-4 text-center text-[12px] uppercase tracking-[0.24em] text-cream"
+                className="rounded-full border border-forest/20 px-6 py-4 text-center text-[12px] uppercase tracking-[0.22em] text-forest"
               >
                 Call {site.phoneDisplay}
               </a>
@@ -161,30 +182,5 @@ export default function Nav() {
         )}
       </AnimatePresence>
     </>
-  );
-}
-
-function Logo() {
-  return (
-    <span className="relative grid h-11 w-11 shrink-0 place-items-center">
-      <span className="absolute inset-0 rounded-full border border-gold-lt/30" />
-      <span className="absolute inset-[3px] rounded-full bg-gradient-to-br from-gold-lt/12 to-transparent" />
-      <svg viewBox="0 0 32 32" className="relative h-6 w-6" aria-hidden>
-        <defs>
-          <linearGradient id="leafG" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stopColor="#f2ddab" />
-            <stop offset="55%" stopColor="#d9b866" />
-            <stop offset="100%" stopColor="#7fae95" />
-          </linearGradient>
-        </defs>
-        <path
-          d="M16 3c-6 4.2-9.5 9-9.5 14.2A9.5 9.5 0 0 0 16 29a9.5 9.5 0 0 0 9.5-11.8C25.5 12 22 7.2 16 3Z"
-          fill="url(#leafG)"
-          opacity="0.9"
-        />
-        <path d="M16 8v17" stroke="#07100d" strokeWidth="1.1" opacity="0.5" />
-        <path d="M16 15l4.5-3.4M16 20l-4.5-3.4" stroke="#07100d" strokeWidth="1" opacity="0.4" />
-      </svg>
-    </span>
   );
 }

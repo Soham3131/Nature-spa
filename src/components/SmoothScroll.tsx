@@ -2,15 +2,10 @@
 
 import { useEffect } from "react";
 import Lenis from "lenis";
-import { bindViewport } from "@/lib/viewportStore";
 
 export default function SmoothScroll() {
   useEffect(() => {
-    const unbind = bindViewport();
-
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      return unbind;
-    }
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
     const lenis = new Lenis({
       duration: 1.15,
@@ -46,7 +41,6 @@ export default function SmoothScroll() {
       document.removeEventListener("click", onClick);
       cancelAnimationFrame(raf);
       lenis.destroy();
-      unbind();
     };
   }, []);
 

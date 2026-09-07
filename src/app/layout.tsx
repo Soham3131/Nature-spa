@@ -134,7 +134,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${display.variable} ${sans.variable} h-full antialiased`}
       suppressHydrationWarning
     >
-      <body className="min-h-full bg-ink text-cream">
+      <body className="min-h-full bg-ivory text-forest">
         <StructuredData />
         <SmoothScroll />
         <ScrollProgress />

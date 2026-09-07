@@ -1,16 +1,33 @@
 @import "tailwindcss";
 
+/* ------------------------------------------------------------------ *
+ *  Palette sampled from the logo: deep forest greens, fresh leaf,
+ *  warm bronze, ivory paper, black river stones.
+ * ------------------------------------------------------------------ */
 @theme {
-  --color-ink: #07100d;
-  --color-ink-2: #0b1712;
-  --color-ink-3: #12211b;
-  --color-cream: #f7f2e8;
-  --color-cream-dim: #cfc7b8;
-  --color-gold: #d9b866;
-  --color-gold-lt: #f2ddab;
-  --color-gold-dk: #a8873f;
-  --color-jade: #7fae95;
-  --color-rose: #e0b3ae;
+  /* surfaces */
+  --color-ivory: #fbfaf5;
+  --color-sand: #f1eee1;
+  --color-paper: #ffffff;
+  --color-stone: #14201a;
+  --color-stone-2: #1d2b23;
+
+  /* greens */
+  --color-forest: #1f4a22;
+  --color-forest-2: #35702f;
+  --color-leaf: #57a63c;
+  --color-lime: #8fc24a;
+  --color-mist: #dfe9d5;
+
+  /* warm accents */
+  --color-bronze: #a17a4e;
+  --color-bronze-lt: #c2a06a;
+  --color-clay: #c4705a;
+  --color-butter: #f2c744;
+
+  /* text */
+  --color-body: #47564a;
+  --color-muted: #6e7d6c;
 
   --font-display: var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
   --font-sans: var(--font-jost), ui-sans-serif, system-ui, sans-serif;
@@ -19,8 +36,7 @@
 }
 
 :root {
-  color-scheme: dark;
-  --nav-h: 76px;
+  color-scheme: light;
 }
 
 * {
@@ -31,7 +47,7 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Lenis takes over scrolling; disable native smooth when it is active */
+/* Lenis owns scrolling; disable native smooth while it is active */
 html.lenis,
 html.lenis body {
   height: auto;
@@ -45,8 +61,8 @@ html.lenis body {
 }
 
 body {
-  background: var(--color-ink);
-  color: var(--color-cream);
+  background: var(--color-ivory);
+  color: var(--color-body);
   font-family: var(--font-sans);
   overflow-x: hidden;
   font-synthesis-weight: none;
@@ -54,8 +70,8 @@ body {
 }
 
 ::selection {
-  background: var(--color-gold);
-  color: var(--color-ink);
+  background: var(--color-lime);
+  color: var(--color-forest);
 }
 
 /* ---------- scrollbar ---------- */
@@ -63,18 +79,19 @@ body {
   width: 9px;
 }
 ::-webkit-scrollbar-track {
-  background: #060c0a;
+  background: var(--color-sand);
 }
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(#a8873f, #d9b866);
+  background: linear-gradient(var(--color-leaf), var(--color-forest));
   border-radius: 99px;
 }
 
-/* ---------- typography helpers ---------- */
+/* ---------- typography ---------- */
 @utility display {
   font-family: var(--font-display);
   font-weight: 300;
   letter-spacing: -0.015em;
+  color: var(--color-forest);
 }
 
 @utility eyebrow {
@@ -82,19 +99,27 @@ body {
   letter-spacing: 0.32em;
   text-transform: uppercase;
   font-weight: 500;
-  color: var(--color-gold);
+  color: var(--color-bronze);
 }
 
-@utility gold-text {
-  background: linear-gradient(100deg, #a8873f 0%, #f2ddab 38%, #fff8e6 50%, #f2ddab 62%, #a8873f 100%);
+/** Gradient wordmark treatment — forest → leaf → forest */
+@utility accent-text {
+  background: linear-gradient(
+    100deg,
+    #1f4a22 0%,
+    #35702f 26%,
+    #6fbb42 50%,
+    #35702f 74%,
+    #1f4a22 100%
+  );
   background-size: 220% auto;
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  animation: goldShift 8s linear infinite;
+  animation: leafShift 9s linear infinite;
 }
 
-@keyframes goldShift {
+@keyframes leafShift {
   to {
     background-position: 220% center;
   }
@@ -112,25 +137,38 @@ body {
   will-change: transform;
 }
 
+/** Frosted card on a light ground */
 @utility glass {
   background: linear-gradient(
     150deg,
-    rgba(255, 255, 255, 0.07) 0%,
-    rgba(255, 255, 255, 0.02) 55%,
-    rgba(217, 184, 102, 0.05) 100%
+    rgba(255, 255, 255, 0.92) 0%,
+    rgba(255, 255, 255, 0.72) 55%,
+    rgba(223, 233, 213, 0.6) 100%
   );
-  backdrop-filter: blur(16px) saturate(140%);
-  -webkit-backdrop-filter: blur(16px) saturate(140%);
-  border: 1px solid rgba(242, 221, 171, 0.14);
+  backdrop-filter: blur(14px) saturate(120%);
+  -webkit-backdrop-filter: blur(14px) saturate(120%);
+  border: 1px solid rgba(31, 74, 34, 0.14);
+  box-shadow:
+    0 1px 2px rgba(31, 74, 34, 0.05),
+    0 18px 40px -24px rgba(31, 74, 34, 0.28);
+}
+
+/** Solid card, for dense content */
+@utility card {
+  background: var(--color-paper);
+  border: 1px solid rgba(31, 74, 34, 0.1);
+  box-shadow:
+    0 1px 2px rgba(31, 74, 34, 0.04),
+    0 20px 44px -28px rgba(31, 74, 34, 0.3);
 }
 
 @utility hairline {
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(242, 221, 171, 0.45) 20%,
-    rgba(242, 221, 171, 0.75) 50%,
-    rgba(242, 221, 171, 0.45) 80%,
+    rgba(87, 166, 60, 0.35) 20%,
+    rgba(87, 166, 60, 0.6) 50%,
+    rgba(87, 166, 60, 0.35) 80%,
     transparent
   );
 }
@@ -149,18 +187,27 @@ body {
 @keyframes breathe {
   0%,
   100% {
-    opacity: 0.45;
+    opacity: 0.4;
     transform: scale(1);
   }
   50% {
-    opacity: 0.85;
-    transform: scale(1.08);
+    opacity: 0.8;
+    transform: scale(1.07);
   }
 }
 
 @keyframes marquee {
   to {
     transform: translateX(-50%);
+  }
+}
+
+@keyframes drift {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+  100% {
+    transform: translate3d(0, -120px, 0) rotate(28deg);
   }
 }
 
@@ -171,27 +218,27 @@ body {
   animation: breathe 9s ease-in-out infinite;
 }
 
-/* ---------- reveal-on-scroll (CSS-only fallback + JS driven) ---------- */
+/* ---------- reveal on scroll ---------- */
 .reveal {
   opacity: 0;
-  transform: translate3d(0, 34px, 0) rotateX(6deg);
+  transform: translate3d(0, 30px, 0);
   transition:
-    opacity 1s var(--ease-lux),
-    transform 1.1s var(--ease-lux);
+    opacity 0.9s var(--ease-lux),
+    transform 1s var(--ease-lux);
 }
 .reveal.is-in {
   opacity: 1;
   transform: none;
 }
 
-/* ---------- noise / grain ---------- */
+/* ---------- paper grain ---------- */
 .grain::after {
   content: "";
   position: absolute;
   inset: 0;
   pointer-events: none;
-  opacity: 0.055;
-  mix-blend-mode: overlay;
+  opacity: 0.035;
+  mix-blend-mode: multiply;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 

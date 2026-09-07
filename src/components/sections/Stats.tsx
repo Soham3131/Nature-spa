@@ -19,13 +19,13 @@ const stats = [
 
 export default function Stats() {
   return (
-    <section className="relative overflow-hidden bg-ink py-20 sm:py-24">
+    <section className="relative overflow-hidden bg-ivory py-20 sm:py-24">
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 opacity-70"
         style={{
           background:
-            "radial-gradient(60% 100% at 50% 0%, rgba(217,184,102,0.08), transparent 70%)",
+            "radial-gradient(60% 100% at 50% 0%, rgba(143,194,74,0.08), transparent 70%)",
         }}
       />
       <div className="relative mx-auto grid max-w-[1400px] gap-10 px-5 sm:grid-cols-2 sm:px-8 lg:grid-cols-4">
@@ -38,11 +38,11 @@ export default function Stats() {
                 decimals={s.decimals ?? 0}
                 gap={s.gap ?? false}
               />
-              <p className="mt-3 text-[11px] uppercase tracking-[0.22em] text-cream-dim/60">
+              <p className="mt-3 text-[11px] uppercase tracking-[0.22em] text-body/60">
                 {s.label}
               </p>
-              <span className="mt-5 block h-px w-full bg-cream/8">
-                <span className="block h-full w-0 bg-gradient-to-r from-gold-dk to-gold-lt transition-all duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:w-full" />
+              <span className="mt-5 block h-px w-full bg-forest/8">
+                <span className="block h-full w-0 bg-gradient-to-r from-leaf to-forest transition-all duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:w-full" />
               </span>
             </div>
           </Reveal>
@@ -109,8 +109,8 @@ function Counter({
 
   return (
     <p ref={ref} className="display text-[clamp(2.6rem,6vw,4rem)] leading-none">
-      <span className="gold-text">{shown}</span>
-      <span className="text-cream/60">
+      <span className="accent-text">{shown}</span>
+      <span className="text-forest/60">
         {gap ? " " : ""}
         {suffix}
       </span>

@@ -68,13 +68,13 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="relative overflow-hidden bg-ink py-28 sm:py-36">
+    <section id="contact" className="relative overflow-hidden bg-ivory py-28 sm:py-36">
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0"
         style={{
           background:
-            "radial-gradient(50% 45% at 15% 25%, rgba(127,174,149,0.13), transparent 65%), radial-gradient(45% 40% at 85% 70%, rgba(217,184,102,0.13), transparent 65%)",
+            "radial-gradient(50% 45% at 15% 25%, rgba(87,166,60,0.13), transparent 65%), radial-gradient(45% 40% at 85% 70%, rgba(143,194,74,0.13), transparent 65%)",
         }}
       />
 
@@ -86,13 +86,13 @@ export default function Contact() {
               <p className="eyebrow">Book Your Session</p>
             </Reveal>
             <Reveal delay={80}>
-              <h2 className="display mt-5 text-[clamp(2.4rem,5.4vw,4rem)] leading-[1.02] text-cream">
+              <h2 className="display mt-5 text-[clamp(2.4rem,5.4vw,4rem)] leading-[1.02] text-forest">
                 Let&apos;s get you
-                <span className="gold-text italic"> on the table</span>
+                <span className="accent-text italic"> on the table</span>
               </h2>
             </Reveal>
             <Reveal delay={140}>
-              <p className="mt-6 max-w-md text-[15px] leading-[1.85] text-cream-dim/80">
+              <p className="mt-6 max-w-md text-[15px] leading-[1.85] text-body/80">
                 Fill this in and it opens WhatsApp with your details already typed out —
                 just hit send. Or call us directly, we usually pick up on the first ring.
               </p>
@@ -108,14 +108,14 @@ export default function Contact() {
                 {site.hours}
               </Detail>
               <Detail icon={Phone} label="Phone">
-                <a href={`tel:+${site.phoneRaw}`} className="transition-colors hover:text-gold">
+                <a href={`tel:+${site.phoneRaw}`} className="transition-colors hover:text-bronze">
                   {site.phoneDisplay}
                 </a>
               </Detail>
               <Detail icon={Mail} label="Email">
                 <a
                   href={`mailto:${site.email}`}
-                  className="break-all transition-colors hover:text-gold"
+                  className="break-all transition-colors hover:text-bronze"
                 >
                   {site.email}
                 </a>
@@ -128,7 +128,7 @@ export default function Contact() {
                   href={site.socials.instagram}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2.5 rounded-full border border-gold-lt/20 px-5 py-3 text-[11px] uppercase tracking-[0.18em] text-cream/85 transition-all duration-500 hover:-translate-y-0.5 hover:border-gold-lt/60 hover:text-gold"
+                  className="flex items-center gap-2.5 rounded-full border border-leaf/20 px-5 py-3 text-[11px] uppercase tracking-[0.18em] text-forest/85 transition-all duration-500 hover:-translate-y-0.5 hover:border-leaf/60 hover:text-bronze"
                 >
                   <Instagram size={15} strokeWidth={1.5} /> Instagram
                 </a>
@@ -136,7 +136,7 @@ export default function Contact() {
                   href={site.socials.facebook}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2.5 rounded-full border border-gold-lt/20 px-5 py-3 text-[11px] uppercase tracking-[0.18em] text-cream/85 transition-all duration-500 hover:-translate-y-0.5 hover:border-gold-lt/60 hover:text-gold"
+                  className="flex items-center gap-2.5 rounded-full border border-leaf/20 px-5 py-3 text-[11px] uppercase tracking-[0.18em] text-forest/85 transition-all duration-500 hover:-translate-y-0.5 hover:border-leaf/60 hover:text-bronze"
                 >
                   <Facebook size={15} strokeWidth={1.5} /> Facebook
                 </a>
@@ -154,7 +154,7 @@ export default function Contact() {
               >
                 <span
                   aria-hidden
-                  className="absolute -right-24 -top-24 h-56 w-56 rounded-full bg-gold/18 blur-3xl"
+                  className="absolute -right-24 -top-24 h-56 w-56 rounded-full bg-bronze/18 blur-3xl"
                 />
 
                 <div className="relative grid gap-5 sm:grid-cols-2">
@@ -185,14 +185,14 @@ export default function Contact() {
                       id="service"
                       value={form.service}
                       onChange={set("service")}
-                      className="mt-2 w-full rounded-xl border border-cream/12 bg-ink-3/70 px-4 py-3.5 text-[14px] text-cream outline-none transition-colors focus:border-gold-lt/60"
+                      className="mt-2 w-full rounded-xl border border-forest/18 bg-paper px-4 py-3.5 text-[14px] text-forest outline-none transition-all focus:border-leaf focus:ring-2 focus:ring-leaf/25"
                     >
                       {services.map((s) => (
-                        <option key={s.slug} value={s.name} className="bg-ink-3">
+                        <option key={s.slug} value={s.name} className="bg-paper">
                           {s.name} — {s.price}
                         </option>
                       ))}
-                      <option value="Not sure — please advise" className="bg-ink-3">
+                      <option value="Not sure — please advise" className="bg-paper">
                         Not sure — please advise
                       </option>
                     </select>
@@ -204,10 +204,10 @@ export default function Contact() {
                       id="guests"
                       value={form.guests}
                       onChange={set("guests")}
-                      className="mt-2 w-full rounded-xl border border-cream/12 bg-ink-3/70 px-4 py-3.5 text-[14px] text-cream outline-none transition-colors focus:border-gold-lt/60"
+                      className="mt-2 w-full rounded-xl border border-forest/18 bg-paper px-4 py-3.5 text-[14px] text-forest outline-none transition-all focus:border-leaf focus:ring-2 focus:ring-leaf/25"
                     >
                       {["1", "2", "3", "4+"].map((g) => (
-                        <option key={g} value={g} className="bg-ink-3">
+                        <option key={g} value={g} className="bg-paper">
                           {g}
                         </option>
                       ))}
@@ -232,21 +232,21 @@ export default function Contact() {
                       value={form.message}
                       onChange={set("message")}
                       placeholder="Injuries, pregnancy, pressure preference, allergies…"
-                      className="mt-2 w-full resize-none rounded-xl border border-cream/12 bg-ink-3/70 px-4 py-3.5 text-[14px] text-cream placeholder:text-cream-dim/35 outline-none transition-colors focus:border-gold-lt/60"
+                      className="mt-2 w-full resize-none rounded-xl border border-forest/18 bg-paper px-4 py-3.5 text-[14px] text-forest placeholder:text-muted/60 outline-none transition-all focus:border-leaf focus:ring-2 focus:ring-leaf/25"
                     />
                   </div>
                 </div>
 
                 <button
                   type="submit"
-                  className="group relative mt-8 flex w-full items-center justify-center gap-2.5 overflow-hidden rounded-full bg-gradient-to-br from-gold-lt via-gold to-gold-dk px-8 py-4.5 text-[12px] uppercase tracking-[0.22em] text-ink shadow-[0_18px_50px_-18px_rgba(217,184,102,0.8)] transition-transform duration-500 hover:scale-[1.02]"
+                  className="group relative mt-8 flex w-full items-center justify-center gap-2.5 overflow-hidden rounded-full bg-forest px-8 py-4.5 text-[12px] uppercase tracking-[0.22em] text-ivory shadow-[0_16px_36px_-16px_rgba(31,74,34,0.6)] transition-transform duration-500 hover:scale-[1.02]"
                 >
                   <span className="absolute inset-0 -translate-x-full bg-white/35 blur-md transition-transform duration-[900ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-x-full" />
                   <Send size={15} strokeWidth={1.7} className="relative" />
                   <span className="relative">Send on WhatsApp</span>
                 </button>
 
-                <p className="relative mt-4 text-center text-[11.5px] leading-relaxed text-cream-dim/50">
+                <p className="relative mt-4 text-center text-[11.5px] leading-relaxed text-body/50">
                   This opens WhatsApp with your details pre-filled. No data is stored on
                   this website.
                 </p>
@@ -257,10 +257,10 @@ export default function Contact() {
                       initial={{ opacity: 0, y: 12 }}
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: 12 }}
-                      className="relative mt-5 flex items-center justify-center gap-2.5 rounded-xl border border-jade/35 bg-jade/12 px-5 py-3.5 text-[13px] text-cream"
+                      className="relative mt-5 flex items-center justify-center gap-2.5 rounded-xl border border-leaf/35 bg-leaf/12 px-5 py-3.5 text-[13px] text-forest"
                       role="status"
                     >
-                      <Check size={15} strokeWidth={2} className="text-jade" />
+                      <Check size={15} strokeWidth={2} className="text-leaf" />
                       WhatsApp opened — press send and we&apos;ll reply shortly.
                     </motion.div>
                   )}
@@ -280,7 +280,7 @@ function Label({ htmlFor, children }: { htmlFor: string; children: React.ReactNo
   return (
     <label
       htmlFor={htmlFor}
-      className="text-[10.5px] uppercase tracking-[0.2em] text-cream-dim/65"
+      className="text-[10.5px] uppercase tracking-[0.2em] text-body/65"
     >
       {children}
     </label>
@@ -300,11 +300,11 @@ function Field({
         id={id}
         {...rest}
         aria-invalid={!!error}
-        className={`mt-2 w-full rounded-xl border bg-ink-3/70 px-4 py-3.5 text-[14px] text-cream placeholder:text-cream-dim/35 outline-none transition-colors focus:border-gold-lt/60 ${
-          error ? "border-rose/70" : "border-cream/12"
+        className={`mt-2 w-full rounded-xl border bg-paper px-4 py-3.5 text-[14px] text-forest placeholder:text-muted/60 outline-none transition-all focus:border-leaf focus:ring-2 focus:ring-leaf/25 ${
+          error ? "border-clay" : "border-forest/18"
         }`}
       />
-      {error && <p className="mt-1.5 text-[11.5px] text-rose">{error}</p>}
+      {error && <p className="mt-1.5 text-[11.5px] text-clay">{error}</p>}
     </div>
   );
 }
@@ -320,14 +320,14 @@ function Detail({
 }) {
   return (
     <div className="flex gap-4">
-      <span className="mt-0.5 grid h-10 w-10 shrink-0 place-items-center rounded-xl border border-gold-lt/20 bg-gold-lt/5 text-gold">
+      <span className="mt-0.5 grid h-10 w-10 shrink-0 place-items-center rounded-xl border border-leaf/20 bg-leaf/5 text-bronze">
         <Icon size={16} strokeWidth={1.4} />
       </span>
       <span>
-        <span className="block text-[10.5px] uppercase tracking-[0.2em] text-cream-dim/55">
+        <span className="block text-[10.5px] uppercase tracking-[0.2em] text-body/55">
           {label}
         </span>
-        <span className="mt-1 block text-[14.5px] leading-relaxed text-cream/90">
+        <span className="mt-1 block text-[14.5px] leading-relaxed text-forest/90">
           {children}
         </span>
       </span>

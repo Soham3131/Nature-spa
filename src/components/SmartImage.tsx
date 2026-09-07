@@ -63,7 +63,7 @@ export default function SmartImage({
           aria-hidden
           className="absolute inset-0 flex items-center justify-center px-4 text-center"
         >
-          <span className="text-[10px] uppercase tracking-[0.28em] text-cream/55">
+          <span className="text-[10px] uppercase tracking-[0.28em] text-forest/55">
             {label ?? "Photo coming soon"}
           </span>
         </span>

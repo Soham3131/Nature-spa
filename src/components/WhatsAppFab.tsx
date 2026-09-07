@@ -41,7 +41,7 @@ export default function WhatsAppFab() {
                 initial={{ opacity: 0, x: 12 }}
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: 12 }}
-                className="hidden rounded-full border border-gold-lt/20 bg-ink/90 px-4 py-2 text-[11px] tracking-[0.14em] text-cream/85 backdrop-blur-md sm:block"
+                className="hidden rounded-full border border-leaf/20 bg-ivory/90 px-4 py-2 text-[11px] tracking-[0.14em] text-forest/85 backdrop-blur-md sm:block"
               >
                 Chat with us — we reply fast
               </motion.span>

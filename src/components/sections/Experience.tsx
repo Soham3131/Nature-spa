@@ -47,14 +47,14 @@ export default function Experience() {
     <section
       id="experience"
       ref={ref}
-      className="relative overflow-hidden bg-ink py-28 sm:py-36"
+      className="relative overflow-hidden bg-ivory py-28 sm:py-36"
     >
       <div
         aria-hidden
         className="pointer-events-none absolute inset-x-0 -top-40 h-96 opacity-40 blur-3xl"
         style={{
           background:
-            "radial-gradient(50% 60% at 30% 50%, rgba(127,174,149,0.22), transparent 70%), radial-gradient(45% 55% at 75% 40%, rgba(217,184,102,0.2), transparent 70%)",
+            "radial-gradient(50% 60% at 30% 50%, rgba(87,166,60,0.22), transparent 70%), radial-gradient(45% 55% at 75% 40%, rgba(143,194,74,0.2), transparent 70%)",
         }}
       />
 
@@ -64,7 +64,7 @@ export default function Experience() {
           <div className="relative mx-auto aspect-4/5 w-full max-w-lg">
             <motion.div
               style={{ y: yA, rotate: rot }}
-              className="layer-3d absolute left-0 top-0 h-[78%] w-[72%] overflow-hidden rounded-[2rem] border border-gold-lt/15 shadow-[0_40px_90px_-30px_rgba(0,0,0,0.9)]"
+              className="layer-3d absolute left-0 top-0 h-[78%] w-[72%] overflow-hidden rounded-[2rem] border border-leaf/15 shadow-[0_28px_66px_-30px_rgba(31,74,34,0.30)]"
             >
               <SmartImage
                 src={gallery[2].resolved}
@@ -78,7 +78,7 @@ export default function Experience() {
 
             <motion.div
               style={{ y: yB, rotate: rotB }}
-              className="layer-3d absolute bottom-0 right-0 h-[62%] w-[58%] overflow-hidden rounded-[1.75rem] border border-gold-lt/25 shadow-[0_40px_90px_-30px_rgba(0,0,0,0.95)]"
+              className="layer-3d absolute bottom-0 right-0 h-[62%] w-[58%] overflow-hidden rounded-[1.75rem] border border-leaf/25 shadow-[0_28px_66px_-30px_rgba(31,74,34,0.32)]"
             >
               <SmartImage
                 src={gallery[3].resolved}
@@ -94,8 +94,8 @@ export default function Experience() {
               style={{ y: yA }}
               className="absolute -left-3 bottom-10 z-10 rounded-2xl glass px-5 py-4 backdrop-blur-xl"
             >
-              <p className="display text-4xl gold-text">{services.length}</p>
-              <p className="mt-1 text-[10px] uppercase tracking-[0.24em] text-cream-dim/75">
+              <p className="display text-4xl accent-text">{services.length}</p>
+              <p className="mt-1 text-[10px] uppercase tracking-[0.24em] text-body/75">
                 Signature therapies
               </p>
             </motion.div>
@@ -109,14 +109,14 @@ export default function Experience() {
           </Reveal>
 
           <Reveal delay={80}>
-            <h2 className="display mt-5 text-[clamp(2.4rem,5.4vw,4.2rem)] leading-[1.02] text-cream">
+            <h2 className="display mt-5 text-[clamp(2.4rem,5.4vw,4.2rem)] leading-[1.02] text-forest">
               An hour that belongs
-              <span className="gold-text italic"> entirely to you</span>
+              <span className="accent-text italic"> entirely to you</span>
             </h2>
           </Reveal>
 
           <Reveal delay={140}>
-            <p className="mt-7 max-w-xl text-[15px] leading-[1.85] text-cream-dim/85">
+            <p className="mt-7 max-w-xl text-[15px] leading-[1.85] text-body/85">
               Gurugram moves fast. The Nature Spa was built as the counterweight — a
               quiet, gold-lit space a few steps off the noise, where the phone goes
               away and someone who knows exactly what they are doing takes the weight
@@ -125,7 +125,7 @@ export default function Experience() {
           </Reveal>
 
           <Reveal delay={200}>
-            <p className="mt-5 max-w-xl text-[15px] leading-[1.85] text-cream-dim/75">
+            <p className="mt-5 max-w-xl text-[15px] leading-[1.85] text-body/75">
               You will be greeted, offered tea, shown the room, and asked what your
               week has been like. Everything after that is shaped around your answer.
             </p>
@@ -135,11 +135,11 @@ export default function Experience() {
             {pillars.map((p, i) => (
               <Reveal key={p.title} delay={260 + i * 70}>
                 <div className="group">
-                  <div className="flex h-11 w-11 items-center justify-center rounded-xl border border-gold-lt/20 bg-gold-lt/5 text-gold transition-all duration-500 group-hover:-translate-y-1 group-hover:border-gold-lt/50">
+                  <div className="flex h-11 w-11 items-center justify-center rounded-xl border border-leaf/20 bg-leaf/5 text-bronze transition-all duration-500 group-hover:-translate-y-1 group-hover:border-leaf/50">
                     <p.icon size={18} strokeWidth={1.4} />
                   </div>
-                  <h3 className="mt-4 text-[15px] tracking-wide text-cream">{p.title}</h3>
-                  <p className="mt-2 text-[13.5px] leading-relaxed text-cream-dim/70">
+                  <h3 className="mt-4 text-[15px] tracking-wide text-forest">{p.title}</h3>
+                  <p className="mt-2 text-[13.5px] leading-relaxed text-body/70">
                     {p.body}
                   </p>
                 </div>

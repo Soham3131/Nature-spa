@@ -19,7 +19,7 @@ export const services: Service[] = [
     duration: "90 min",
     price: "₹2,999",
     benefits: ["Full-body tension release", "Warm herbal compress", "Scalp & foot ritual"],
-    accent: "#d9b866",
+    accent: "#2e7d32",
   },
   {
     slug: "balinese-massage",
@@ -30,7 +30,7 @@ export const services: Service[] = [
     duration: "60 / 90 min",
     price: "from ₹1,899",
     benefits: ["Improves circulation", "Relieves muscle knots", "Calms the nervous system"],
-    accent: "#8fbf9f",
+    accent: "#6fbb42",
   },
   {
     slug: "deep-tissue",
@@ -41,7 +41,7 @@ export const services: Service[] = [
     duration: "60 / 90 min",
     price: "from ₹2,199",
     benefits: ["Chronic pain relief", "Better mobility", "Post-workout recovery"],
-    accent: "#c98f6a",
+    accent: "#a9704a",
   },
   {
     slug: "aroma-therapy",
@@ -52,7 +52,7 @@ export const services: Service[] = [
     duration: "60 min",
     price: "from ₹1,699",
     benefits: ["Stress & anxiety relief", "Better sleep", "Mood lift"],
-    accent: "#b79ccc",
+    accent: "#9c86c0",
   },
   {
     slug: "thai-dry-massage",
@@ -63,7 +63,7 @@ export const services: Service[] = [
     duration: "60 / 90 min",
     price: "from ₹1,999",
     benefits: ["Increases flexibility", "Releases hips & hamstrings", "Energising"],
-    accent: "#7fb0c4",
+    accent: "#4e9a8f",
   },
   {
     slug: "hammam-scrub",
@@ -74,7 +74,7 @@ export const services: Service[] = [
     duration: "75 min",
     price: "₹2,799",
     benefits: ["Full-body exfoliation", "Visible glow", "Detoxifying"],
-    accent: "#d3a3a3",
+    accent: "#c98f5a",
   },
   {
     slug: "foot-reflexology",
@@ -85,7 +85,7 @@ export const services: Service[] = [
     duration: "45 min",
     price: "₹1,299",
     benefits: ["Relieves tired legs", "Improves sleep", "Quick reset"],
-    accent: "#9fb87f",
+    accent: "#8fc24a",
   },
   {
     slug: "couple-spa",
@@ -96,6 +96,6 @@ export const services: Service[] = [
     duration: "90 min",
     price: "₹5,499 for two",
     benefits: ["Private suite", "Two therapists", "Celebration-ready"],
-    accent: "#e0a8b0",
+    accent: "#c77e8a",
   },
 ];

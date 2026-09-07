@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Instagram, Facebook, Mail, Phone, MapPin, Clock, Star } from "lucide-react";
 import { site, whatsappLink, defaultWhatsAppMessage } from "@/lib/site";
 import { services } from "@/lib/services";
@@ -7,33 +8,38 @@ export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="relative overflow-hidden border-t border-gold-lt/10 bg-ink-2">
+    <footer className="relative overflow-hidden bg-forest text-ivory">
       <div
         aria-hidden
-        className="pointer-events-none absolute -top-40 left-1/2 h-80 w-[70rem] -translate-x-1/2 rounded-full opacity-30 blur-3xl"
+        className="pointer-events-none absolute inset-0"
         style={{
           background:
-            "radial-gradient(closest-side, rgba(217,184,102,0.45), transparent 70%)",
+            "radial-gradient(50% 60% at 12% 0%, rgba(143,194,74,0.22), transparent 68%), radial-gradient(40% 50% at 88% 100%, rgba(87,166,60,0.2), transparent 70%)",
         }}
       />
 
       <div className="relative mx-auto max-w-[1400px] px-5 py-20 sm:px-8">
         <div className="grid gap-12 lg:grid-cols-[1.4fr_1fr_1fr_1.2fr]">
           <div>
-            <h3 className="display text-3xl text-cream">
-              The Nature <span className="gold-text">Spa</span>
-            </h3>
-            <p className="mt-4 max-w-sm text-sm leading-relaxed text-cream-dim/80">
+            <Image
+              src="/logo.png"
+              alt={site.name}
+              width={168}
+              height={154}
+              className="h-16 w-auto brightness-125"
+            />
+
+            <p className="mt-5 max-w-sm text-sm leading-relaxed text-ivory/70">
               {site.shortDesc}
             </p>
 
             <div className="mt-6 flex items-center gap-2">
               <div className="flex gap-0.5">
                 {Array.from({ length: 5 }).map((_, i) => (
-                  <Star key={i} size={13} className="fill-gold text-gold" />
+                  <Star key={i} size={13} className="fill-butter text-butter" />
                 ))}
               </div>
-              <span className="text-xs tracking-wide text-cream-dim/70">
+              <span className="text-xs tracking-wide text-ivory/65">
                 {site.rating.value} on Google
               </span>
             </div>
@@ -52,13 +58,13 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="eyebrow">Therapies</h4>
+            <h4 className="text-[11px] uppercase tracking-[0.3em] text-lime">Therapies</h4>
             <ul className="mt-5 space-y-2.5">
               {services.slice(0, 6).map((s) => (
                 <li key={s.slug}>
                   <Link
                     href="/#services"
-                    className="text-sm text-cream-dim/75 transition-colors hover:text-gold"
+                    className="text-sm text-ivory/70 transition-colors hover:text-lime"
                   >
                     {s.name}
                   </Link>
@@ -68,7 +74,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="eyebrow">Explore</h4>
+            <h4 className="text-[11px] uppercase tracking-[0.3em] text-lime">Explore</h4>
             <ul className="mt-5 space-y-2.5">
               {[
                 { href: "/#experience", label: "The Experience" },
@@ -81,7 +87,7 @@ export default function Footer() {
                 <li key={l.href}>
                   <Link
                     href={l.href}
-                    className="text-sm text-cream-dim/75 transition-colors hover:text-gold"
+                    className="text-sm text-ivory/70 transition-colors hover:text-lime"
                   >
                     {l.label}
                   </Link>
@@ -91,10 +97,10 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="eyebrow">Visit us</h4>
-            <ul className="mt-5 space-y-4 text-sm text-cream-dim/80">
+            <h4 className="text-[11px] uppercase tracking-[0.3em] text-lime">Visit us</h4>
+            <ul className="mt-5 space-y-4 text-sm text-ivory/75">
               <li className="flex gap-3">
-                <MapPin size={16} strokeWidth={1.5} className="mt-0.5 shrink-0 text-gold" />
+                <MapPin size={16} strokeWidth={1.5} className="mt-0.5 shrink-0 text-lime" />
                 <span>
                   {site.address.line1}
                   <br />
@@ -102,18 +108,18 @@ export default function Footer() {
                 </span>
               </li>
               <li className="flex gap-3">
-                <Clock size={16} strokeWidth={1.5} className="mt-0.5 shrink-0 text-gold" />
+                <Clock size={16} strokeWidth={1.5} className="mt-0.5 shrink-0 text-lime" />
                 <span>{site.hours}</span>
               </li>
               <li className="flex gap-3">
-                <Phone size={16} strokeWidth={1.5} className="mt-0.5 shrink-0 text-gold" />
-                <a href={`tel:+${site.phoneRaw}`} className="hover:text-gold">
+                <Phone size={16} strokeWidth={1.5} className="mt-0.5 shrink-0 text-lime" />
+                <a href={`tel:+${site.phoneRaw}`} className="hover:text-lime">
                   {site.phoneDisplay}
                 </a>
               </li>
               <li className="flex gap-3">
-                <Mail size={16} strokeWidth={1.5} className="mt-0.5 shrink-0 text-gold" />
-                <a href={`mailto:${site.email}`} className="break-all hover:text-gold">
+                <Mail size={16} strokeWidth={1.5} className="mt-0.5 shrink-0 text-lime" />
+                <a href={`mailto:${site.email}`} className="break-all hover:text-lime">
                   {site.email}
                 </a>
               </li>
@@ -123,16 +129,16 @@ export default function Footer() {
               href={whatsappLink(defaultWhatsAppMessage)}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-6 inline-block rounded-full bg-gradient-to-br from-gold-lt to-gold px-6 py-3 text-[11px] uppercase tracking-[0.22em] text-ink transition-transform duration-300 hover:scale-[1.03]"
+              className="mt-6 inline-block rounded-full bg-lime px-6 py-3 text-[11px] uppercase tracking-[0.22em] text-forest transition-transform duration-300 hover:scale-[1.04]"
             >
               WhatsApp us
             </a>
           </div>
         </div>
 
-        <div className="mt-16 h-px hairline opacity-40" />
+        <div className="mt-16 h-px bg-ivory/15" />
 
-        <div className="mt-8 flex flex-col items-center justify-between gap-4 text-[11px] tracking-[0.14em] text-cream-dim/50 sm:flex-row">
+        <div className="mt-8 flex flex-col items-center justify-between gap-4 text-[11px] tracking-[0.14em] text-ivory/50 sm:flex-row">
           <p>
             © {year} {site.name}. All rights reserved.
           </p>
@@ -158,7 +164,7 @@ function Social({
       target="_blank"
       rel="noopener noreferrer"
       aria-label={label}
-      className="grid h-10 w-10 place-items-center rounded-full border border-gold-lt/20 text-cream/80 transition-all duration-400 hover:-translate-y-1 hover:border-gold-lt/60 hover:text-gold"
+      className="grid h-10 w-10 place-items-center rounded-full border border-ivory/25 text-ivory/80 transition-all duration-400 hover:-translate-y-1 hover:border-lime hover:text-lime"
     >
       {children}
     </a>

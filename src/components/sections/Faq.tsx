@@ -45,20 +45,20 @@ export default function Faq() {
   const [open, setOpen] = useState<number | null>(0);
 
   return (
-    <section id="faq" className="relative overflow-hidden bg-ink-2 py-28 sm:py-36">
+    <section id="faq" className="relative overflow-hidden bg-sand py-28 sm:py-36">
       <div className="relative mx-auto grid max-w-[1400px] gap-14 px-5 sm:px-8 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
         <div>
           <Reveal>
             <p className="eyebrow">Good to Know</p>
           </Reveal>
           <Reveal delay={80}>
-            <h2 className="display mt-5 text-[clamp(2.4rem,5.4vw,4rem)] leading-[1.02] text-cream">
+            <h2 className="display mt-5 text-[clamp(2.4rem,5.4vw,4rem)] leading-[1.02] text-forest">
               Questions,
-              <span className="gold-text italic"> answered plainly</span>
+              <span className="accent-text italic"> answered plainly</span>
             </h2>
           </Reveal>
           <Reveal delay={140}>
-            <p className="mt-6 max-w-sm text-[14.5px] leading-relaxed text-cream-dim/75">
+            <p className="mt-6 max-w-sm text-[14.5px] leading-relaxed text-body/75">
               Anything we have not covered? Send us a message — a real person reads
               it and replies.
             </p>
@@ -68,7 +68,7 @@ export default function Faq() {
               href={whatsappLink("Hi The Nature Spa! I have a question:")}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-7 inline-block rounded-full border border-gold-lt/30 px-6 py-3.5 text-[11px] uppercase tracking-[0.2em] text-cream transition-all duration-500 hover:border-gold-lt/70 hover:text-gold"
+              className="mt-7 inline-block rounded-full border border-leaf/30 px-6 py-3.5 text-[11px] uppercase tracking-[0.2em] text-forest transition-all duration-500 hover:border-leaf/70 hover:text-bronze"
             >
               Ask on WhatsApp
             </a>
@@ -80,17 +80,17 @@ export default function Faq() {
             const isOpen = open === i;
             return (
               <Reveal key={f.q} delay={i * 50}>
-                <div className="border-b border-cream/8">
+                <div className="border-b border-forest/8">
                   <button
                     onClick={() => setOpen(isOpen ? null : i)}
                     aria-expanded={isOpen}
-                    className="flex w-full items-center justify-between gap-6 py-6 text-left transition-colors duration-400 hover:text-gold"
+                    className="flex w-full items-center justify-between gap-6 py-6 text-left transition-colors duration-400 hover:text-bronze"
                   >
-                    <span className="text-[15.5px] leading-snug text-cream">{f.q}</span>
+                    <span className="text-[15.5px] leading-snug text-forest">{f.q}</span>
                     <motion.span
                       animate={{ rotate: isOpen ? 45 : 0 }}
                       transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
-                      className="grid h-8 w-8 shrink-0 place-items-center rounded-full border border-gold-lt/25 text-gold"
+                      className="grid h-8 w-8 shrink-0 place-items-center rounded-full border border-leaf/25 text-bronze"
                     >
                       <Plus size={15} strokeWidth={1.5} />
                     </motion.span>
@@ -105,7 +105,7 @@ export default function Faq() {
                         transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
                         className="overflow-hidden"
                       >
-                        <p className="pb-7 pr-12 text-[14px] leading-[1.85] text-cream-dim/78">
+                        <p className="pb-7 pr-12 text-[14px] leading-[1.85] text-body/78">
                           {f.a}
                         </p>
                       </motion.div>
