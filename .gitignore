@@ -39,3 +39,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# a 21MB GIF export of the hero clip — spaa-720.webm supersedes it
+/public/spaa.gif

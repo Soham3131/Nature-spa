@@ -8,7 +8,7 @@ export default function JournalPreview() {
   const featured = posts.slice(0, 3);
 
   return (
-    <section id="journal" className="relative overflow-hidden bg-ivory py-28 sm:py-36">
+    <section id="journal" className="relative overflow-hidden bg-ivory py-16 sm:py-24 lg:py-32">
       <div className="relative mx-auto max-w-[1400px] px-5 sm:px-8">
         <div className="flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-end">
           <div>
@@ -38,9 +38,9 @@ export default function JournalPreview() {
           </Reveal>
         </div>
 
-        <div className="mt-16 grid gap-7 lg:grid-cols-3">
+        <div className="-mx-5 mt-10 flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 pb-3 [scrollbar-width:none] sm:mt-14 lg:mx-0 lg:grid lg:grid-cols-3 lg:gap-7 lg:overflow-visible lg:px-0 lg:pb-0 [&::-webkit-scrollbar]:hidden">
           {featured.map((post, i) => (
-            <Reveal key={post.slug} delay={i * 90}>
+            <Reveal key={post.slug} delay={i * 90} className="w-[78vw] shrink-0 snap-center lg:w-auto lg:shrink">
               <Link href={`/blog/${post.slug}`} className="group block h-full">
                 <article className="flex h-full flex-col overflow-hidden rounded-[1.6rem] glass transition-all duration-600 hover:-translate-y-2 hover:border-leaf/45">
                   <div className="relative aspect-16/10 overflow-hidden">

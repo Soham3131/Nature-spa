@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, type ReactNode } from "react";
-import { motion, useMotionValue, useSpring, useTransform } from "motion/react";
+import { motion, useMotionValue, useScroll, useSpring, useTransform } from "motion/react";
 
 type Props = {
   children: ReactNode;
@@ -14,8 +14,13 @@ type Props = {
 };
 
 /**
- * Real 3D card tilt driven by pointer position, with a moving specular glare.
- * Falls back to a plain card on touch devices (no pointer hover).
+ * Real 3D card tilt, from two sources added together.
+ *
+ * A pointer contributes tilt on hover, and the card's travel through the
+ * viewport contributes a smaller, constant tilt of its own. On a phone there is
+ * no hover, so the pointer term stays at rest and the scroll term is the whole
+ * effect — which is why the cards still turn in 3D on touch, where a
+ * hover-only implementation was simply flat.
  */
 export default function TiltCard({
   children,
@@ -33,8 +38,22 @@ export default function TiltCard({
   const sx = useSpring(mx, spring);
   const sy = useSpring(my, spring);
 
+  /* scroll term: leans back on the way in, forward on the way out */
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"],
+  });
+  const scrollTilt = useSpring(
+    useTransform(scrollYProgress, [0, 0.5, 1], [intensity * 0.9, 0, -intensity * 0.9]),
+    { stiffness: 90, damping: 24, mass: 0.4 },
+  );
+
   const rotateY = useTransform(sx, [0, 1], [-intensity, intensity]);
-  const rotateX = useTransform(sy, [0, 1], [intensity, -intensity]);
+  const pointerTiltX = useTransform(sy, [0, 1], [intensity, -intensity]);
+  const rotateX = useTransform(
+    [pointerTiltX, scrollTilt],
+    ([a, b]: number[]) => a + b,
+  );
   const glareX = useTransform(sx, [0, 1], [0, 100]);
   const glareY = useTransform(sy, [0, 1], [0, 100]);
   const glareBg = useTransform(

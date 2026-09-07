@@ -47,7 +47,7 @@ export default function Experience() {
     <section
       id="experience"
       ref={ref}
-      className="on-emerald relative overflow-hidden py-28 sm:py-36"
+      className="on-emerald relative overflow-hidden py-16 sm:py-24 lg:py-32"
     >
       <div
         aria-hidden

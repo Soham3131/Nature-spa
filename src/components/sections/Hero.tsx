@@ -45,7 +45,7 @@ export default function Hero() {
   const stripY = useTransform(p, [0, 1], [0, -22]);
 
   return (
-    <section ref={stage} className="relative h-[320vh] bg-ivory">
+    <section ref={stage} className="relative h-[190vh] bg-ivory sm:h-[240vh] lg:h-[320vh]">
       <div className="sticky top-0 h-[100svh] overflow-hidden">
         {/*
           The backdrop sits inside this group on purpose. `mix-blend-mode` on

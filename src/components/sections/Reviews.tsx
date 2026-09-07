@@ -26,7 +26,7 @@ export default function Reviews() {
   const rowB = [...reviews.slice().reverse(), ...reviews.slice().reverse()];
 
   return (
-    <section id="reviews" className="relative overflow-hidden bg-sand py-24 sm:py-32">
+    <section id="reviews" className="relative overflow-hidden bg-sand py-16 sm:py-22 lg:py-30">
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0"

@@ -22,6 +22,12 @@ type Props = {
  * parked whenever the hero is off screen, so it costs nothing further down the
  * page.
  *
+ * Two decoder rules matter here. The element is only revealed once
+ * `readyState` reaches HAVE_CURRENT_DATA, because a VP9 stream paints a bright
+ * green initialisation frame if it is shown any earlier; and no new seek is
+ * issued while one is still in flight, which is the other way that green frame
+ * surfaces.
+ *
  * The clip was shot on white. The hero wraps this component in a
  * `mix-blend-mode: multiply` layer so that white drops out and the subject
  * sits directly on the page rather than in a boxed rectangle — the blend has
@@ -73,7 +79,20 @@ export default function ScrollVideo({ p, sources, poster, className = "" }: Prop
 
     const tick = () => {
       raf = requestAnimationFrame(tick);
+
+      /*
+       * The media events can fire before React attaches its handlers — the
+       * clip is small and often has data by first paint — which left the
+       * element permanently hidden behind the poster. Polling readyState here
+       * is immune to that race.
+       */
+      if (el.readyState >= 2) setReady(true);
+
       if (!visible.current) return;
+
+      // Nothing decoded yet, or a seek still in flight: pushing a new
+      // currentTime here is what makes the decoder emit a green frame.
+      if (el.readyState < 2 || el.seeking) return;
 
       const duration = el.duration;
       if (!duration || Number.isNaN(duration)) return;
@@ -116,7 +135,8 @@ export default function ScrollVideo({ p, sources, poster, className = "" }: Prop
           muted
           playsInline
           preload="auto"
-          onLoadedMetadata={() => setReady(true)}
+          // readyState 2 (HAVE_CURRENT_DATA) — a frame actually exists.
+          // Revealing on loadedmetadata instead shows VP9's green init frame.
           onLoadedData={() => setReady(true)}
           onError={() => setFailed(true)}
           className="relative h-full w-full object-contain transition-opacity duration-700"

@@ -13,7 +13,7 @@ export default function Services() {
   const [active, setActive] = useState<Service | null>(null);
 
   return (
-    <section id="services" className="relative overflow-hidden bg-sand py-24 sm:py-32">
+    <section id="services" className="relative overflow-hidden bg-sand py-16 sm:py-22 lg:py-30">
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0"
@@ -44,13 +44,13 @@ export default function Services() {
           </Reveal>
         </div>
 
-        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-10 grid grid-cols-2 gap-3 sm:mt-14 sm:gap-6 lg:grid-cols-4">
           {services.map((s, i) => (
             <Reveal key={s.slug} delay={i * 60} className="h-full">
               <TiltCard intensity={7} lift={18} className="h-full">
                 <button
                   onClick={() => setActive(s)}
-                  className="group relative flex h-full w-full flex-col overflow-hidden rounded-[1.4rem] card text-left transition-[border-color,box-shadow] duration-500 hover:border-leaf/45"
+                  className="group relative flex h-full w-full flex-col overflow-hidden rounded-[1.1rem] card text-left transition-[border-color,box-shadow] duration-500 hover:border-leaf/45 sm:rounded-[1.4rem]"
                 >
                   {/* photograph */}
                   <span className="relative block aspect-4/3 overflow-hidden">
@@ -58,7 +58,7 @@ export default function Services() {
                       src={s.image}
                       alt={s.name}
                       className="h-full w-full transition-transform duration-[1100ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-108"
-                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                      sizes="(max-width: 640px) 50vw, (max-width: 1024px) 50vw, 25vw"
                     />
                     <span
                       aria-hidden
@@ -66,28 +66,28 @@ export default function Services() {
                     />
                     <span
                       aria-hidden
-                      className="absolute left-4 top-4 h-2.5 w-2.5 rounded-full ring-4 ring-white/70"
+                      className="absolute left-3 top-3 h-2 w-2 rounded-full ring-4 ring-white/70 sm:left-4 sm:top-4 sm:h-2.5 sm:w-2.5"
                       style={{ background: s.accent }}
                     />
-                    <span className="absolute bottom-3.5 left-4 right-4 flex items-center gap-1.5 text-[10.5px] uppercase tracking-[0.18em] text-white/90">
-                      <Clock size={11} strokeWidth={1.8} />
+                    <span className="absolute bottom-2.5 left-3 right-3 flex items-center gap-1 text-[9px] uppercase tracking-[0.14em] text-white/90 sm:bottom-3.5 sm:left-4 sm:right-4 sm:gap-1.5 sm:text-[10.5px]">
+                      <Clock size={10} strokeWidth={1.8} className="shrink-0" />
                       {s.duration}
                     </span>
                   </span>
 
                   {/* copy */}
-                  <span className="flex flex-1 flex-col p-5">
-                    <span className="display block text-[1.3rem] leading-tight">
+                  <span className="flex flex-1 flex-col p-3.5 sm:p-5">
+                    <span className="display block text-[0.98rem] leading-tight sm:text-[1.3rem]">
                       {s.name}
                     </span>
-                    <span className="mt-2 block flex-1 text-[13px] leading-relaxed text-body">
+                    <span className="mt-1.5 line-clamp-2 block flex-1 text-[11.5px] leading-snug text-body sm:mt-2 sm:line-clamp-none sm:text-[13px] sm:leading-relaxed">
                       {s.short}
                     </span>
-                    <span className="mt-5 flex items-center justify-between border-t border-forest/10 pt-3.5">
-                      <span className="text-[13.5px] tracking-wide text-forest-2">
+                    <span className="mt-3 flex items-center justify-between border-t border-forest/10 pt-2.5 sm:mt-5 sm:pt-3.5">
+                      <span className="text-[11.5px] tracking-wide text-forest-2 sm:text-[13.5px]">
                         {s.price}
                       </span>
-                      <span className="flex h-7 w-7 items-center justify-center rounded-full bg-forest/6 text-forest transition-all duration-500 group-hover:bg-forest group-hover:text-ivory">
+                      <span className="flex h-6 w-6 items-center justify-center rounded-full bg-forest/6 text-forest transition-all duration-500 group-hover:bg-forest group-hover:text-ivory sm:h-7 sm:w-7">
                         <ArrowUpRight size={14} strokeWidth={1.6} />
                       </span>
                     </span>

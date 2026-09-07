@@ -19,7 +19,7 @@ const stats = [
 
 export default function Stats() {
   return (
-    <section className="relative overflow-hidden bg-ivory py-20 sm:py-24">
+    <section className="relative overflow-hidden bg-ivory py-14 sm:py-18 lg:py-24">
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 opacity-70"

@@ -153,6 +153,22 @@ stacks, drifting botanicals at three depths behind the hero, counters that count
 up when they enter view, and Lenis smooth scrolling. Everything respects
 `prefers-reduced-motion`.
 
+### Phones get a different shape, not a squeezed one
+
+The page was 23.5 phone-screens tall and read as endless and empty. It is now
+about 15, because three sections change form rather than just shrink:
+
+- the hero's scroll range is `190vh` on a phone against `320vh` on a desktop;
+- the gallery drops the pinned, scroll-driven row for a native snap-scrolling
+  one in normal flow — six pictures in under a screen instead of three screens,
+  and it answers a swipe, which is the gesture a thumb expects;
+- the therapy grid is two-up on a phone, and the journal is a swipe row.
+
+`TiltCard` adds two sources of tilt: the pointer, and the card's own travel
+through the viewport. Touch has no hover, so the pointer term stays at rest and
+the scroll term becomes the whole effect — which is why the cards still turn in
+3D on a phone, where a hover-only version was simply flat.
+
 ### Keeping the scroll smooth
 
 Three rules this codebase follows, because each of them was measurably costing
