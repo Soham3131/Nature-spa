@@ -9,7 +9,7 @@ import {
   type MotionValue,
 } from "motion/react";
 import { Star, ArrowDown } from "lucide-react";
-import OilPourScene from "@/components/hero/OilPourScene";
+import ScrollVideo from "@/components/hero/ScrollVideo";
 import { site, whatsappLink, defaultWhatsAppMessage } from "@/lib/site";
 
 const words = ["Breathe.", "Unwind.", "Return."];
@@ -17,7 +17,7 @@ const words = ["Breathe.", "Unwind.", "Return."];
 /** Captions that narrate the pour as it happens. */
 const captions = [
   { at: [0.0, 0.2] as const, text: "Shoulders that have not let go all week" },
-  { at: [0.3, 0.5] as const, text: "Warm oil, poured slowly" },
+  { at: [0.3, 0.5] as const, text: "Our own blend, warmed and ready" },
   { at: [0.6, 0.78] as const, text: "The knots begin to give" },
   { at: [0.88, 1.0] as const, text: "Completely, finally at ease" },
 ];
@@ -148,10 +148,17 @@ export default function Hero() {
           </motion.div>
 
           {/* ------------------------------ scene ------------------------------ */}
-          <div className="relative flex w-full justify-center lg:block">
-            <OilPourScene
+          <div className="relative w-full">
+            {/* soft halo so the clip's white ground melts into the page */}
+            <div
+              aria-hidden
+              className="pointer-events-none absolute -inset-6 rounded-[3rem] bg-lime/10 blur-2xl"
+            />
+            <ScrollVideo
               p={p}
-              className="h-[32svh] w-auto drop-shadow-[0_30px_60px_rgba(31,74,34,0.10)] sm:h-[38svh] lg:h-auto lg:w-full"
+              src="/spaa.mp4"
+              poster="/hero-poster.jpg"
+              className="relative aspect-16/10 w-full rounded-[1.6rem] border border-forest/10 shadow-[0_30px_70px_-34px_rgba(31,74,34,0.4)] sm:rounded-[2rem] lg:aspect-4/3"
             />
           </div>
         </div>
@@ -168,7 +175,7 @@ export default function Hero() {
             className="flex flex-col items-center gap-2 text-body/70"
           >
             <span className="text-[9px] uppercase tracking-[0.32em]">
-              Scroll to pour
+              Scroll to begin
             </span>
             <motion.span
               animate={{ y: [0, 7, 0] }}

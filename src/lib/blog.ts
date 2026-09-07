@@ -24,7 +24,7 @@ export const posts: Post[] = [
     category: "Guides",
     date: "2026-08-24",
     readingTime: "6 min read",
-    image: "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=1200&q=80",
+    image: "https://images.unsplash.com/photo-1775133262667-316bd4d9e5b5?auto=format&fit=crop&w=1200&q=80",
     body: [
       {
         type: "p",
@@ -78,7 +78,7 @@ export const posts: Post[] = [
     category: "Wellness",
     date: "2026-08-10",
     readingTime: "5 min read",
-    image: "https://images.unsplash.com/photo-1600334129128-685c5582fd35?auto=format&fit=crop&w=1200&q=80",
+    image: "https://images.unsplash.com/photo-1741714297621-9ff218799077?auto=format&fit=crop&w=1200&q=80",
     body: [
       {
         type: "p",
@@ -123,7 +123,7 @@ export const posts: Post[] = [
     category: "Guides",
     date: "2026-07-28",
     readingTime: "5 min read",
-    image: "https://images.unsplash.com/photo-1591343395082-e120087004b4?auto=format&fit=crop&w=1200&q=80",
+    image: "https://images.unsplash.com/photo-1719123045765-08ca3c27991b?auto=format&fit=crop&w=1200&q=80",
     body: [
       {
         type: "p",
@@ -168,7 +168,7 @@ export const posts: Post[] = [
     category: "Therapies",
     date: "2026-07-12",
     readingTime: "4 min read",
-    image: "https://images.unsplash.com/photo-1570174006382-148305ce4972?auto=format&fit=crop&w=1200&q=80",
+    image: "https://images.unsplash.com/photo-1671492246169-cdd6305870a0?auto=format&fit=crop&w=1200&q=80",
     body: [
       {
         type: "p",
@@ -212,7 +212,7 @@ export const posts: Post[] = [
     category: "Wellness",
     date: "2026-06-30",
     readingTime: "6 min read",
-    image: "https://images.unsplash.com/photo-1611920629515-3f76f8c36b37?auto=format&fit=crop&w=1200&q=80",
+    image: "https://images.unsplash.com/photo-1719123592776-621ac28b3133?auto=format&fit=crop&w=1200&q=80",
     body: [
       {
         type: "p",
@@ -253,7 +253,7 @@ export const posts: Post[] = [
     category: "Experiences",
     date: "2026-06-15",
     readingTime: "4 min read",
-    image: "https://images.unsplash.com/photo-1596178060671-7a80dc8059ea?auto=format&fit=crop&w=1200&q=80",
+    image: "https://images.unsplash.com/photo-1775133263816-8b2a1c5d13e8?auto=format&fit=crop&w=1200&q=80",
     body: [
       {
         type: "p",

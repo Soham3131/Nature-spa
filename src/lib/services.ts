@@ -7,6 +7,8 @@ export type Service = {
   price: string;
   benefits: string[];
   accent: string;
+  /** card photograph */
+  image: string;
 };
 
 export const services: Service[] = [
@@ -20,6 +22,8 @@ export const services: Service[] = [
     price: "₹2,999",
     benefits: ["Full-body tension release", "Warm herbal compress", "Scalp & foot ritual"],
     accent: "#2e7d32",
+    image:
+      "https://images.unsplash.com/photo-1775133263714-848c8fe09e73?auto=format&fit=crop&w=900&q=80",
   },
   {
     slug: "balinese-massage",
@@ -31,6 +35,8 @@ export const services: Service[] = [
     price: "from ₹1,899",
     benefits: ["Improves circulation", "Relieves muscle knots", "Calms the nervous system"],
     accent: "#6fbb42",
+    image:
+      "https://images.unsplash.com/photo-1709755491926-f7aa83748967?auto=format&fit=crop&w=900&q=80",
   },
   {
     slug: "deep-tissue",
@@ -42,6 +48,8 @@ export const services: Service[] = [
     price: "from ₹2,199",
     benefits: ["Chronic pain relief", "Better mobility", "Post-workout recovery"],
     accent: "#a9704a",
+    image:
+      "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=900&q=80",
   },
   {
     slug: "aroma-therapy",
@@ -53,6 +61,8 @@ export const services: Service[] = [
     price: "from ₹1,699",
     benefits: ["Stress & anxiety relief", "Better sleep", "Mood lift"],
     accent: "#9c86c0",
+    image:
+      "https://images.unsplash.com/photo-1671492246169-cdd6305870a0?auto=format&fit=crop&w=900&q=80",
   },
   {
     slug: "thai-dry-massage",
@@ -64,6 +74,8 @@ export const services: Service[] = [
     price: "from ₹1,999",
     benefits: ["Increases flexibility", "Releases hips & hamstrings", "Energising"],
     accent: "#4e9a8f",
+    image:
+      "https://images.unsplash.com/photo-1775133262667-316bd4d9e5b5?auto=format&fit=crop&w=900&q=80",
   },
   {
     slug: "hammam-scrub",
@@ -75,6 +87,8 @@ export const services: Service[] = [
     price: "₹2,799",
     benefits: ["Full-body exfoliation", "Visible glow", "Detoxifying"],
     accent: "#c98f5a",
+    image:
+      "https://images.unsplash.com/photo-1781736363509-a2327b675a03?auto=format&fit=crop&w=900&q=80",
   },
   {
     slug: "foot-reflexology",
@@ -86,6 +100,8 @@ export const services: Service[] = [
     price: "₹1,299",
     benefits: ["Relieves tired legs", "Improves sleep", "Quick reset"],
     accent: "#8fc24a",
+    image:
+      "https://images.unsplash.com/photo-1633526543913-d30e3c230d1f?auto=format&fit=crop&w=900&q=80",
   },
   {
     slug: "couple-spa",
@@ -97,5 +113,7 @@ export const services: Service[] = [
     price: "₹5,499 for two",
     benefits: ["Private suite", "Two therapists", "Celebration-ready"],
     accent: "#c77e8a",
+    image:
+      "https://images.unsplash.com/photo-1596178060671-7a80dc8059ea?auto=format&fit=crop&w=900&q=80",
   },
 ];

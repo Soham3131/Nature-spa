@@ -2,89 +2,139 @@
 
 import { Star, Quote, ExternalLink } from "lucide-react";
 import Reveal from "@/components/Reveal";
+import SmartImage from "@/components/SmartImage";
 import { reviews, type Review } from "@/lib/reviews";
 import { site } from "@/lib/site";
 
+const u = (id: string, w = 700) =>
+  `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=${w}&q=80`;
+
+/** Ambient photographs beside the heading. */
+const moodShots = [
+  {
+    src: u("1741714297621-9ff218799077"),
+    alt: "A guest resting with her eyes closed after a treatment",
+  },
+  {
+    src: u("1775133263714-848c8fe09e73"),
+    alt: "Warm oil poured slowly across the brow during a shirodhara ritual",
+  },
+];
+
 export default function Reviews() {
-  // duplicated so the marquee loops seamlessly
   const rowA = [...reviews, ...reviews];
   const rowB = [...reviews.slice().reverse(), ...reviews.slice().reverse()];
 
   return (
-    <section id="reviews" className="relative overflow-hidden bg-sand py-28 sm:py-36">
+    <section id="reviews" className="relative overflow-hidden bg-sand py-24 sm:py-32">
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0"
         style={{
           background:
-            "radial-gradient(55% 45% at 50% 0%, rgba(143,194,74,0.12), transparent 65%)",
+            "radial-gradient(55% 45% at 78% 6%, rgba(143,194,74,0.2), transparent 66%)",
         }}
       />
 
-      <div className="relative mx-auto max-w-[1400px] px-5 text-center sm:px-8">
-        <Reveal>
-          <p className="eyebrow">Guest Reviews</p>
-        </Reveal>
+      <div className="relative mx-auto grid max-w-[1400px] items-center gap-12 px-5 sm:px-8 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16">
+        {/* ---------------- heading ---------------- */}
+        <div>
+          <Reveal>
+            <p className="eyebrow">Guest Reviews</p>
+          </Reveal>
 
-        <Reveal delay={80}>
-          <h2 className="display mx-auto mt-5 max-w-3xl text-[clamp(2.4rem,5.4vw,4.2rem)] leading-[1.02] text-forest">
-            What people say after
-            <span className="accent-text italic"> they walk back out</span>
-          </h2>
-        </Reveal>
+          <Reveal delay={80}>
+            <h2 className="display mt-4 max-w-xl text-[clamp(2.2rem,5vw,3.9rem)] leading-[1.03]">
+              What people say after
+              <span className="accent-text italic"> they walk back out</span>
+            </h2>
+          </Reveal>
 
-        <Reveal delay={140}>
-          <div className="mt-9 inline-flex flex-wrap items-center justify-center gap-x-6 gap-y-3 rounded-full glass px-7 py-4">
-            <span className="flex items-center gap-2">
-              <span className="display text-3xl accent-text">{site.rating.value}</span>
-              <span className="flex gap-0.5">
-                {Array.from({ length: 5 }).map((_, i) => (
-                  <Star key={i} size={13} className="fill-bronze text-bronze" />
-                ))}
+          <Reveal delay={140}>
+            <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-4 rounded-2xl card px-6 py-5">
+              <span className="flex items-center gap-2.5">
+                <GoogleMark />
+                <span className="display text-3xl leading-none">{site.rating.value}</span>
+                <span className="flex gap-0.5">
+                  {Array.from({ length: 5 }).map((_, i) => (
+                    <Star key={i} size={13} className="fill-butter text-butter" />
+                  ))}
+                </span>
               </span>
-            </span>
-            <span className="h-6 w-px bg-forest/15" />
-            <span className="text-[11px] uppercase tracking-[0.22em] text-body/75">
-              {site.rating.count}+ Google reviews
-            </span>
+              <span className="h-7 w-px bg-forest/12" />
+              <span className="text-[11px] uppercase tracking-[0.2em] text-body">
+                {site.rating.count}+ reviews on Google
+              </span>
+              <a
+                href={site.socials.google}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="ml-auto flex items-center gap-1.5 text-[11px] uppercase tracking-[0.18em] text-forest-2 transition-colors hover:text-leaf"
+              >
+                Read all <ExternalLink size={12} strokeWidth={1.8} />
+              </a>
+            </div>
+          </Reveal>
+
+          <Reveal delay={200}>
             <a
               href={site.socials.google}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1.5 text-[11px] uppercase tracking-[0.18em] text-bronze transition-opacity hover:opacity-70"
+              className="mt-6 inline-flex items-center gap-2 rounded-full border border-forest/20 px-6 py-3.5 text-[11px] uppercase tracking-[0.2em] text-forest transition-all duration-500 hover:border-leaf hover:text-leaf"
             >
-              Read all <ExternalLink size={12} strokeWidth={1.6} />
+              Leave us a review <ExternalLink size={13} strokeWidth={1.6} />
             </a>
+          </Reveal>
+        </div>
+
+        {/* ---------------- mood photographs ---------------- */}
+        <Reveal delay={120}>
+          <div className="scene-3d relative mx-auto aspect-4/3 w-full max-w-lg">
+            <div className="layer-3d absolute left-0 top-0 h-[74%] w-[62%] -rotate-3 overflow-hidden rounded-[1.5rem] border border-forest/10 shadow-[0_28px_60px_-30px_rgba(31,74,34,0.4)]">
+              <SmartImage
+                src={moodShots[0].src}
+                alt={moodShots[0].alt}
+                className="h-full w-full"
+                sizes="(max-width: 1024px) 62vw, 26vw"
+              />
+            </div>
+            <div className="layer-3d absolute bottom-0 right-0 h-[68%] w-[56%] rotate-3 overflow-hidden rounded-[1.4rem] border border-forest/10 shadow-[0_28px_60px_-30px_rgba(31,74,34,0.45)]">
+              <SmartImage
+                src={moodShots[1].src}
+                alt={moodShots[1].alt}
+                className="h-full w-full"
+                sizes="(max-width: 1024px) 56vw, 24vw"
+              />
+            </div>
+            <span
+              aria-hidden
+              className="absolute -left-4 bottom-8 rounded-2xl card px-5 py-4"
+            >
+              <span className="display block text-3xl leading-none accent-text">
+                {site.rating.value}
+              </span>
+              <span className="mt-1.5 block text-[9.5px] uppercase tracking-[0.22em] text-muted">
+                Average rating
+              </span>
+            </span>
           </div>
         </Reveal>
       </div>
 
-      {/* --- 3D marquee rows --- */}
-      <div className="scene-3d relative mt-16 space-y-6">
-        <MarqueeRow items={rowA} duration={64} tilt={4} />
-        <MarqueeRow items={rowB} duration={78} reverse tilt={-4} />
+      {/* ---------------- the carousel ---------------- */}
+      <div className="scene-3d relative mt-16 space-y-5">
+        <MarqueeRow items={rowA} duration={70} tilt={3} />
+        <MarqueeRow items={rowB} duration={84} reverse tilt={-3} />
 
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-y-0 left-0 w-20 bg-gradient-to-r from-sand to-transparent sm:w-40"
+          className="pointer-events-none absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-sand to-transparent sm:w-32"
         />
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-y-0 right-0 w-20 bg-gradient-to-l from-sand to-transparent sm:w-40"
+          className="pointer-events-none absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-sand to-transparent sm:w-32"
         />
-      </div>
-
-      <div className="relative mx-auto mt-14 max-w-[1400px] px-5 text-center sm:px-8">
-        <Reveal>
-          <a
-            href={site.socials.google}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-full border border-leaf/30 px-7 py-3.5 text-[11px] uppercase tracking-[0.22em] text-forest transition-all duration-500 hover:border-leaf/70 hover:text-bronze"
-          >
-            Leave us a review on Google <ExternalLink size={13} strokeWidth={1.5} />
-          </a>
-        </Reveal>
       </div>
     </section>
   );
@@ -104,7 +154,7 @@ function MarqueeRow({
   return (
     <div className="group flex overflow-hidden" style={{ transform: `rotateX(${tilt}deg)` }}>
       <div
-        className="flex shrink-0 gap-6 pr-6 group-hover:[animation-play-state:paused]"
+        className="flex shrink-0 gap-5 pr-5 group-hover:[animation-play-state:paused]"
         style={{
           animation: `marquee ${duration}s linear infinite`,
           animationDirection: reverse ? "reverse" : "normal",
@@ -114,43 +164,75 @@ function MarqueeRow({
           <ReviewCard key={`${r.name}-${i}`} r={r} />
         ))}
         {items.map((r, i) => (
-          <ReviewCard key={`dup-${r.name}-${i}`} r={r} aria-hidden />
+          <ReviewCard key={`dup-${r.name}-${i}`} r={r} />
         ))}
       </div>
     </div>
   );
 }
 
-function ReviewCard({ r }: { r: Review; "aria-hidden"?: boolean }) {
+function ReviewCard({ r }: { r: Review }) {
   return (
-    <figure className="relative flex w-[80vw] shrink-0 flex-col rounded-[1.5rem] glass p-7 text-left transition-all duration-500 hover:-translate-y-1.5 hover:border-leaf/45 sm:w-[26rem]">
-      <Quote size={22} strokeWidth={1.2} className="text-bronze/45" />
+    <figure className="relative flex w-[80vw] shrink-0 flex-col rounded-[1.4rem] card p-6 text-left transition-all duration-500 hover:-translate-y-1.5 hover:border-leaf/45 sm:w-[25rem]">
+      <div className="flex items-start justify-between">
+        <Quote size={20} strokeWidth={1.4} className="text-leaf/40" />
+        {r.sample && (
+          <span className="rounded-full bg-butter/25 px-2.5 py-1 text-[9px] uppercase tracking-[0.2em] text-bronze">
+            Sample
+          </span>
+        )}
+      </div>
 
-      <div className="mt-4 flex gap-0.5">
+      <div className="mt-3.5 flex gap-0.5">
         {Array.from({ length: 5 }).map((_, i) => (
           <Star
             key={i}
             size={12}
-            className={i < r.rating ? "fill-bronze text-bronze" : "text-forest/20"}
+            className={i < r.rating ? "fill-butter text-butter" : "text-forest/15"}
           />
         ))}
       </div>
 
-      <blockquote className="mt-4 flex-1 text-[14px] leading-[1.8] text-body/85">
+      <blockquote className="mt-3.5 flex-1 text-[14px] leading-[1.75] text-body">
         “{r.text}”
       </blockquote>
 
-      <figcaption className="mt-6 flex items-center gap-3 border-t border-forest/8 pt-5">
-        <span className="grid h-10 w-10 place-items-center rounded-full bg-gradient-to-br from-leaf/25 to-leaf/20 text-[12px] tracking-wide text-forest">
+      <figcaption className="mt-5 flex items-center gap-3 border-t border-forest/10 pt-4">
+        <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-gradient-to-br from-leaf to-forest text-[12px] tracking-wide text-ivory">
           {r.initials}
         </span>
-        <span>
-          <span className="block text-[13.5px] text-forest">{r.name}</span>
-          <span className="block text-[10.5px] uppercase tracking-[0.18em] text-body/55">
+        <span className="min-w-0">
+          <span className="block truncate text-[13.5px] text-forest">{r.name}</span>
+          <span className="mt-0.5 flex items-center gap-1.5 text-[10.5px] uppercase tracking-[0.16em] text-muted">
+            <GoogleMark size={11} />
             {r.source} · {r.date}
           </span>
         </span>
       </figcaption>
     </figure>
+  );
+}
+
+/** Google's four-colour G, so the source of the rating is unmistakable. */
+function GoogleMark({ size = 18 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 48 48" aria-hidden className="shrink-0">
+      <path
+        fill="#4285F4"
+        d="M45.1 24.5c0-1.6-.1-2.7-.4-3.9H24v7.1h12.1c-.2 1.8-1.6 4.6-4.5 6.4l6.9 5.4c4.1-3.8 6.6-9.4 6.6-15z"
+      />
+      <path
+        fill="#34A853"
+        d="M24 46c5.9 0 10.9-2 14.5-5.3l-6.9-5.4c-1.9 1.3-4.4 2.2-7.6 2.2-5.8 0-10.7-3.8-12.5-9.1l-7.1 5.5C8 41.2 15.4 46 24 46z"
+      />
+      <path
+        fill="#FBBC05"
+        d="M11.5 28.4c-.5-1.4-.7-2.9-.7-4.4s.3-3 .7-4.4l-7.1-5.5C2.9 17 2 20.4 2 24s.9 7 2.4 9.9l7.1-5.5z"
+      />
+      <path
+        fill="#EA4335"
+        d="M24 10.3c4.1 0 6.9 1.8 8.5 3.3l6.1-6C34.9 4.1 29.9 2 24 2 15.4 2 8 6.8 4.4 14.1l7.1 5.5c1.8-5.3 6.7-9.3 12.5-9.3z"
+      />
+    </svg>
   );
 }

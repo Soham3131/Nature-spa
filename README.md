@@ -19,35 +19,25 @@ npm start        # serve the production build
 
 ## The hero
 
-The hero is a pinned, scroll-driven scene: a bottle of oil tips over the
-guest's shoulder, warm oil runs down and spreads across the back, the knots of
-tension let go, and ease settles in. One scroll tells the whole story.
+The hero is your own clip (`public/spaa.mp4`) **scrubbed by scroll** rather than
+played on a clock: the bottle tips and dispenses cream as the visitor scrolls,
+and stops wherever they stop. Captions on the left narrate it as it goes.
 
-It lives in [`src/components/hero/OilPourScene.tsx`](src/components/hero/OilPourScene.tsx)
-and is plain SVG driven by scroll-linked motion values — no WebGL, no video, no
-external assets, so it costs almost nothing to load and works everywhere. The
-choreography is a list of scroll ranges at the top of the file:
+It lives in [`src/components/hero/ScrollVideo.tsx`](src/components/hero/ScrollVideo.tsx).
+Seeking a video on every scroll event is what makes this effect stutter, so
+scroll only ever sets a *target* time — a rAF loop eases the real playhead
+toward it and skips the seek entirely when the gap is under one frame.
 
-| Scroll      | What happens                          |
-| ----------- | ------------------------------------- |
-| 0.00 → 0.14 | at rest — tension held in the shoulders |
-| 0.14 → 0.36 | the bottle tips over the right shoulder |
-| 0.32 → 0.62 | oil runs down and lands                 |
-| 0.44 → 0.82 | the oil spreads and catches the light   |
-| 0.54 → 0.84 | the knots let go                        |
-| 0.68 → 1.00 | ease settles in and lifts off the skin  |
+If the browser cannot decode the file, or the visitor has reduced motion turned
+on, `public/hero-poster.jpg` is shown instead, so the hero is never blank.
 
-To retime any beat, change the two numbers in that step's `useSeg(...)` call.
-The section's height (`h-[300vh]` in `Hero.tsx`) sets how much scrolling the
-whole sequence takes.
+**Worth doing:** the clip is 3840×2160 (4K) at 5.2 MB. Scrubbing a 4K H.264
+file is heavy on older phones. Exporting a 1920×1080 version at the same length
+would cut the download several times over and scrub far more smoothly — drop it
+in as `public/spaa.mp4` and nothing else needs to change.
 
-### If you add a hero video later
-
-Drop your `.mp4` into `public/`, then in `Hero.tsx` render a `<video>` layer in
-place of `<OilPourScene />` — the copy, badge and CTAs are already a separate
-layer above it, so nothing else has to change.
-
----
+To swap the clip entirely, replace that file and regenerate the poster from any
+frame you like.
 
 ## Colours
 
@@ -70,16 +60,24 @@ Change a value there and it updates everywhere.
 
 ### 1. Replace the placeholder reviews — `src/lib/reviews.ts`
 
-The review carousel shows **placeholders**. Open your Google Business listing,
-copy each real review (name, stars, date, text) and paste them into the
-`reviews` array. Keep the guests' own wording.
+The review carousel shows **placeholders**, each marked with a small "Sample"
+chip. Open your Google Business listing, copy each real review (name, stars,
+date, text) into the `reviews` array, and delete that entry's `sample: true`
+line — the chip disappears on its own.
+
+They are left as obvious placeholders rather than invented testimonials on
+purpose: made-up reviews on a live business page are a real problem, and fake
+ones would also poison the review structured data Google reads from this file.
 
 Also update `site.rating` in `src/lib/site.ts` so the rating badge, the stats
-band and the search-engine structured data match your live listing.
+band and the structured data match your live listing.
 
 ### 2. Add your own photos — `public/images/`
 
-The gallery currently uses licensed stock spa photography. Drop your own
+The gallery, the therapy cards and the journal currently use licensed stock
+photography (Unsplash), chosen to show Indian and South Asian guests where
+possible. Therapy card photos are the `image` field in `src/lib/services.ts`;
+journal photos are the `image` field in `src/lib/blog.ts`. Drop your own
 photographs into `public/images/` using these filenames and the site switches
 to them automatically on the next build:
 
@@ -112,6 +110,8 @@ them — no code change needed.
 public/
   logo.png            transparent logo, used in the nav and footer
   logo-card.png       the version on a cream card
+  spaa.mp4            the hero clip, scrubbed by scroll
+  hero-poster.jpg     first frame — poster and reduced-motion fallback
   images/             your own photographs go here
 src/
   app/
@@ -120,7 +120,7 @@ src/
     blog/             journal index + article pages (statically generated)
     sitemap.ts robots.ts
   components/
-    hero/OilPourScene.tsx   the scroll-driven hero illustration
+    hero/ScrollVideo.tsx    the scroll-scrubbed hero video
     sections/               Hero, Experience, Services, Gallery, Stats,
                             Reviews, JournalPreview, Faq, Contact, Marquee
     Nav Footer WhatsAppFab SmoothScroll ScrollProgress Reveal TiltCard SmartImage
