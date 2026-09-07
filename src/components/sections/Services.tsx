@@ -13,7 +13,7 @@ export default function Services() {
   const [active, setActive] = useState<Service | null>(null);
 
   return (
-    <section id="services" className="relative overflow-hidden bg-sand py-16 sm:py-22 lg:py-30">
+    <section id="services" className="scroll-mt-24 relative overflow-hidden bg-sand py-16 sm:py-22 lg:py-30">
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0"

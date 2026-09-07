@@ -75,7 +75,9 @@ Change a value there and it updates everywhere.
 The review carousel shows **placeholders**, each marked with a small "Sample"
 chip. Open your Google Business listing, copy each real review (name, stars,
 date, text) into the `reviews` array, and delete that entry's `sample: true`
-line — the chip disappears on its own.
+line — the chip disappears on its own. Each review also takes an optional
+`avatar` URL; set it and the card shows the reviewer's photograph in place of
+the initials badge.
 
 They are left as obvious placeholders rather than invented testimonials on
 purpose: made-up reviews on a live business page are a real problem, and fake

@@ -3,6 +3,7 @@
 import { useRef } from "react";
 import {
   motion,
+  useMotionValue,
   useScroll,
   useSpring,
   useTransform,
@@ -26,6 +27,15 @@ import { gallery } from "@/lib/gallery";
  */
 export default function Gallery() {
   const section = useRef<HTMLElement>(null);
+
+  /* phones: the rail's own horizontal scroll drives the cards' 3D */
+  const rail = useRef<HTMLDivElement>(null);
+  const railX = useMotionValue(0);
+  const onRailScroll = () => {
+    const el = rail.current;
+    if (el) railX.set(el.scrollLeft);
+  };
+
   const { scrollYProgress } = useScroll({
     target: section,
     offset: ["start start", "end end"],
@@ -44,7 +54,7 @@ export default function Gallery() {
     <section
       id="gallery"
       ref={section}
-      className="relative bg-ivory lg:h-[280vh]"
+      className="scroll-mt-24 relative bg-ivory lg:h-[280vh]"
       // the tall scroll range only exists on large screens
     >
       <div className="relative flex flex-col py-16 sm:py-20 lg:sticky lg:top-0 lg:h-[100svh] lg:justify-center lg:overflow-hidden lg:py-0">
@@ -72,24 +82,13 @@ export default function Gallery() {
 
         {/* ---------------- phones: a swipeable row ---------------- */}
         <div className="relative mt-8 lg:hidden">
-          <div className="flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 pb-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+          <div
+            ref={rail}
+            onScroll={onRailScroll}
+            className="scene-3d flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 pb-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+          >
             {gallery.map((shot, i) => (
-              <figure
-                key={shot.src}
-                className="w-[78vw] shrink-0 snap-center overflow-hidden rounded-[1.4rem] card"
-              >
-                <div className="relative aspect-4/5 overflow-hidden">
-                  <SmartImage
-                    src={shot.resolved}
-                    alt={shot.alt}
-                    tone={shot.tone}
-                    label={shot.caption}
-                    className="h-full w-full"
-                    sizes="78vw"
-                  />
-                </div>
-                <Caption i={i} caption={shot.caption} />
-              </figure>
+              <SwipeCard key={shot.src} i={i} shot={shot} rail={railX} />
             ))}
           </div>
           <p className="mt-1 px-5 text-[10px] uppercase tracking-[0.24em] text-muted">
@@ -121,6 +120,55 @@ export default function Gallery() {
         </div>
       </div>
     </section>
+  );
+}
+
+/**
+ * A card in the phone rail. It turns and lifts according to how far it is from
+ * the middle of the rail, so swiping produces the same 3D as scrolling does on
+ * a desktop rather than a flat strip.
+ */
+function SwipeCard({
+  i,
+  shot,
+  rail,
+}: {
+  i: number;
+  shot: (typeof gallery)[number];
+  rail: MotionValue<number>;
+}) {
+  const ref = useRef<HTMLElement>(null);
+
+  const offset = useTransform(rail, (x) => {
+    const el = ref.current;
+    if (!el || !el.parentElement) return 0;
+    const centre = el.offsetLeft + el.offsetWidth / 2;
+    const view = x + el.parentElement.clientWidth / 2;
+    return (centre - view) / el.offsetWidth;
+  });
+
+  const rotateY = useTransform(offset, [-1, 0, 1], [-16, 0, 16], { clamp: true });
+  const scale = useTransform(offset, [-1, 0, 1], [0.9, 1, 0.9], { clamp: true });
+  const z = useTransform(offset, [-1, 0, 1], [-60, 0, -60], { clamp: true });
+
+  return (
+    <motion.figure
+      ref={ref}
+      style={{ rotateY, scale, z, transformStyle: "preserve-3d" }}
+      className="w-[78vw] shrink-0 snap-center overflow-hidden rounded-[1.4rem] card"
+    >
+      <div className="relative aspect-4/5 overflow-hidden">
+        <SmartImage
+          src={shot.resolved}
+          alt={shot.alt}
+          tone={shot.tone}
+          label={shot.caption}
+          className="h-full w-full"
+          sizes="78vw"
+        />
+      </div>
+      <Caption i={i} caption={shot.caption} />
+    </motion.figure>
   );
 }
 

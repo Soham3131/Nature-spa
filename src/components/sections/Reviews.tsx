@@ -26,7 +26,7 @@ export default function Reviews() {
   const rowB = [...reviews.slice().reverse(), ...reviews.slice().reverse()];
 
   return (
-    <section id="reviews" className="relative overflow-hidden bg-sand py-16 sm:py-22 lg:py-30">
+    <section id="reviews" className="scroll-mt-24 relative overflow-hidden bg-sand py-16 sm:py-22 lg:py-30">
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0"
@@ -198,9 +198,15 @@ function ReviewCard({ r }: { r: Review }) {
       </blockquote>
 
       <figcaption className="mt-5 flex items-center gap-3 border-t border-forest/10 pt-4">
-        <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-gradient-to-br from-leaf to-forest text-[12px] tracking-wide text-ivory">
-          {r.initials}
-        </span>
+        {r.avatar ? (
+          <span className="relative h-10 w-10 shrink-0 overflow-hidden rounded-full ring-2 ring-leaf/25">
+            <SmartImage src={r.avatar} alt="" className="h-full w-full" sizes="40px" />
+          </span>
+        ) : (
+          <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-gradient-to-br from-leaf to-forest text-[12px] tracking-wide text-ivory">
+            {r.initials}
+          </span>
+        )}
         <span className="min-w-0">
           <span className="block truncate text-[13.5px] text-forest">{r.name}</span>
           <span className="mt-0.5 flex items-center gap-1.5 text-[10.5px] uppercase tracking-[0.16em] text-muted">

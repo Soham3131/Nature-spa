@@ -1,5 +1,4 @@
 import Hero from "@/components/sections/Hero";
-import Marquee from "@/components/sections/Marquee";
 import Experience from "@/components/sections/Experience";
 import Services from "@/components/sections/Services";
 import Gallery from "@/components/sections/Gallery";
@@ -13,7 +12,6 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <Marquee />
       <Experience />
       <Services />
       <Gallery />

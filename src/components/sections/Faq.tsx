@@ -45,7 +45,7 @@ export default function Faq() {
   const [open, setOpen] = useState<number | null>(0);
 
   return (
-    <section id="faq" className="relative overflow-hidden bg-sand py-16 sm:py-24 lg:py-32">
+    <section id="faq" className="scroll-mt-24 relative overflow-hidden bg-sand py-16 sm:py-24 lg:py-32">
       <div className="relative mx-auto grid max-w-[1400px] gap-14 px-5 sm:px-8 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
         <div>
           <Reveal>

@@ -17,7 +17,7 @@
   --color-forest-2: #2c6b2f;
   --color-leaf: #4e9e36;
   --color-lime: #8cc63f;
-  --color-mist: #dde9d0;
+  --color-mist: #eaf3e2;
 
   /* warm accents */
   --color-bronze: #a8783f;
@@ -37,6 +37,14 @@
 
 :root {
   color-scheme: light;
+  /* height of the fixed header, so the hero can hold its content clear of it */
+  --nav-h: 84px;
+}
+
+@media (min-width: 640px) {
+  :root {
+    --nav-h: 96px;
+  }
 }
 
 * {

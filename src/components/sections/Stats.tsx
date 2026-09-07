@@ -28,7 +28,7 @@ export default function Stats() {
             "radial-gradient(60% 100% at 50% 0%, rgba(143,194,74,0.08), transparent 70%)",
         }}
       />
-      <div className="relative mx-auto grid max-w-[1400px] gap-10 px-5 sm:grid-cols-2 sm:px-8 lg:grid-cols-4">
+      <div className="relative mx-auto grid max-w-[1400px] grid-cols-2 gap-x-4 gap-y-8 px-5 sm:gap-10 sm:px-8 lg:grid-cols-4">
         {stats.map((s, i) => (
           <Reveal key={s.label} delay={i * 90}>
             <div className="group relative text-center sm:text-left">

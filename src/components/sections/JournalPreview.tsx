@@ -8,7 +8,7 @@ export default function JournalPreview() {
   const featured = posts.slice(0, 3);
 
   return (
-    <section id="journal" className="relative overflow-hidden bg-ivory py-16 sm:py-24 lg:py-32">
+    <section id="journal" className="scroll-mt-24 relative overflow-hidden bg-ivory py-16 sm:py-24 lg:py-32">
       <div className="relative mx-auto max-w-[1400px] px-5 sm:px-8">
         <div className="flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-end">
           <div>

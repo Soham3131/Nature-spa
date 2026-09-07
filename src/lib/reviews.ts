@@ -23,6 +23,12 @@ export type Review = {
   text: string;
   source: "Google" | "Instagram" | "Facebook";
   /**
+   * Optional photograph of the reviewer. Paste a URL here — their Google
+   * profile picture, or a photo they gave you permission to use — and the card
+   * shows it instead of the initials badge.
+   */
+  avatar?: string;
+  /**
    * Marks an entry as scaffolding. While this is true the card shows a
    * "Sample" chip so placeholder copy can never be mistaken for a real
    * testimonial. Delete the line when you paste a genuine review in.

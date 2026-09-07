@@ -47,7 +47,7 @@ export default function Experience() {
     <section
       id="experience"
       ref={ref}
-      className="on-emerald relative overflow-hidden py-16 sm:py-24 lg:py-32"
+      className="scroll-mt-24 on-emerald relative overflow-hidden py-16 sm:py-24 lg:py-32"
     >
       <div
         aria-hidden
@@ -95,7 +95,7 @@ export default function Experience() {
               className="absolute -left-3 bottom-10 z-10 rounded-2xl border border-lime/25 bg-emerald-2/90 px-5 py-4"
             >
               <p className="display text-4xl text-lime!">{services.length}</p>
-              <p className="mt-1 text-[10px] uppercase tracking-[0.24em] text-body/75">
+              <p className="mt-1 text-[10px] uppercase tracking-[0.24em] text-mist/85">
                 Signature therapies
               </p>
             </motion.div>
@@ -116,7 +116,7 @@ export default function Experience() {
           </Reveal>
 
           <Reveal delay={140}>
-            <p className="mt-7 max-w-xl text-[15px] leading-[1.85] text-body/85">
+            <p className="mt-7 max-w-xl text-[15px] leading-[1.85] text-mist/85">
               Gurugram moves fast. The Nature Spa was built as the counterweight — a
               quiet, gold-lit space a few steps off the noise, where the phone goes
               away and someone who knows exactly what they are doing takes the weight
@@ -125,7 +125,7 @@ export default function Experience() {
           </Reveal>
 
           <Reveal delay={200}>
-            <p className="mt-5 max-w-xl text-[15px] leading-[1.85] text-body/75">
+            <p className="mt-5 max-w-xl text-[15px] leading-[1.85] text-mist/85">
               You will be greeted, offered tea, shown the room, and asked what your
               week has been like. Everything after that is shaped around your answer.
             </p>
@@ -139,7 +139,7 @@ export default function Experience() {
                     <p.icon size={18} strokeWidth={1.4} />
                   </div>
                   <h3 className="mt-4 text-[15px] tracking-wide text-mist">{p.title}</h3>
-                  <p className="mt-2 text-[13.5px] leading-relaxed text-body/70">
+                  <p className="mt-2 text-[13.5px] leading-relaxed text-mist/80">
                     {p.body}
                   </p>
                 </div>
