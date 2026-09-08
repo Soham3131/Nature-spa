@@ -13,7 +13,7 @@ export default function PhotoGallery() {
 
   return (
     <section id="photo-gallery" className="relative bg-ivory">
-      <div className="mx-auto max-w-[1400px] px-5 py-20 sm:px-8 sm:py-24 lg:py-28">
+      <div className="mx-auto max-w-[1400px] px-5 pb-20 pt-10 sm:px-8 sm:pb-24 sm:pt-12 lg:pb-28 lg:pt-14">
         <Reveal className="mx-auto max-w-xl text-center">
           <Eyebrow className="mx-auto">Gallery</Eyebrow>
           <h2 className="display mt-5 text-[clamp(1.8rem,4.2vw,2.9rem)] leading-[1.14]">
