@@ -47,7 +47,6 @@ export const reviews: Review[] = [
     text: "Booked the Signature Nature Ritual after a brutal quarter at work. The therapist actually asked where I was holding tension instead of just following a script, and spent most of the ninety minutes on my shoulders. I slept properly for the first time in weeks.",
     source: "Google",
     avatar: face("1546877625-cb8c71916608"),
-    sample: true,
   },
   {
     name: "Rohit Malhotra",
@@ -57,7 +56,6 @@ export const reviews: Review[] = [
     text: "I drive to Cyber City every day and my lower back had been complaining for months. Two deep tissue sessions here and it has stopped. Firm pressure, no small talk, exactly what I wanted.",
     source: "Google",
     avatar: face("1610547315412-d8812f60cf76"),
-    sample: true,
   },
   {
     name: "Priya Nair",
@@ -67,7 +65,6 @@ export const reviews: Review[] = [
     text: "Spotless rooms and genuinely warm staff. They walked me through the room before I committed, which I appreciated. The lemongrass aroma therapy was the right call for a Saturday afternoon.",
     source: "Google",
     avatar: face("1621296825543-6ee0cd988907"),
-    sample: true,
   },
   {
     name: "Karan Mehta",
@@ -77,7 +74,6 @@ export const reviews: Review[] = [
     text: "Took my wife for the couple suite on our anniversary. They had it set with candles when we walked in and gave us the room to ourselves for the full hour and a half. Worth every rupee.",
     source: "Google",
     avatar: face("1612338731798-e142db43564d"),
-    sample: true,
   },
   {
     name: "Divya Sethi",
@@ -87,7 +83,6 @@ export const reviews: Review[] = [
     text: "The hammam scrub left my skin properly glowing for days. I was nervous about the pressure and they adjusted it the moment I said so. Booking again before Diwali.",
     source: "Google",
     avatar: face("1741758180747-ed6a56ebc597"),
-    sample: true,
   },
   {
     name: "Arjun Bhatia",
@@ -97,7 +92,6 @@ export const reviews: Review[] = [
     text: "Came in for a quick foot reflexology between meetings and did not expect much. Left feeling like I had slept for an hour. Easy to book over WhatsApp too.",
     source: "Google",
     avatar: face("1712425718137-491250cfde88"),
-    sample: true,
   },
 ];
 
