@@ -3,7 +3,7 @@ import { Cormorant_Garamond, Jost } from "next/font/google";
 import "./globals.css";
 import { site, SITE_URL } from "@/lib/site";
 import { reviews } from "@/lib/reviews";
-import { gallery } from "@/lib/gallery";
+import { galleryPhotos } from "@/lib/galleryPhotos";
 import SmoothScroll from "@/components/SmoothScroll";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
@@ -24,8 +24,12 @@ const sans = Jost({
   display: "swap",
 });
 
-/** Social share image — your own photo once it is in /public/images. */
-const OG_IMAGE = gallery[0].resolved;
+/**
+ * Social share image. Taken from the gallery, which resolves to our own
+ * photographs in /public/images and only falls back to stock if one is missing
+ * — so WhatsApp and Google show the real spa, not a stock room.
+ */
+const OG_IMAGE = galleryPhotos[0].resolved;
 const OG_ABSOLUTE = OG_IMAGE.startsWith("http") ? OG_IMAGE : `${SITE_URL}${OG_IMAGE}`;
 
 export const metadata: Metadata = {

@@ -111,11 +111,20 @@ them — no code change needed.
 
 ### 3. Set your real address, prices and domain
 
-- `src/lib/site.ts` — street address, hours, rating. The address is currently a
-  placeholder (`Sector 14 Market`).
+- `src/lib/site.ts` — street address, hours, rating.
 - `src/lib/services.ts` — therapy names, durations and prices.
-- `SITE_URL` in `src/app/layout.tsx`, `src/app/sitemap.ts` and
-  `src/app/robots.ts` — replace `thenaturespa.example.com` with your domain.
+- `SITE_URL` at the top of `src/lib/site.ts` is the single source for canonical
+  URLs, `robots.txt`, the sitemap and social-card images. It is set to
+  `https://www.naturewellnesspa.in`; the `www` host is canonical, because the
+  apex redirects to it. Set `NEXT_PUBLIC_SITE_URL` to override it on a preview
+  or staging deploy — production does not need it.
+
+### Google Search Console
+
+`public/googleec6bb5605707825d.html` is the HTML-file verification token. Keep
+it in place: Google re-checks it periodically and un-verifies the property if it
+disappears. After deploying, add the property in Search Console, pick **HTML
+file** verification, then submit `https://www.naturewellnesspa.in/sitemap.xml`.
 
 ---
 

@@ -1,14 +1,14 @@
 /**
  * Production origin, used for canonical URLs, the sitemap, robots.txt and the
- * absolute image URLs in our social cards. Set NEXT_PUBLIC_SITE_URL in the host
- * (Vercel: Project → Settings → Environment Variables) so this is right in
- * every environment; the fallback below is only a placeholder.
+ * absolute image URLs in our social cards.
  *
- * ⚠️  Google Search Console will not verify, and the sitemap will list URLs
- *     nobody can visit, until this is the real domain.
+ * The www host is the canonical one — naturewellnesspa.in redirects to it — so
+ * every URL we publish has to agree, or Google sees two copies of the site.
+ * NEXT_PUBLIC_SITE_URL overrides this for preview or staging deploys; it does
+ * not need to be set for production.
  */
 export const SITE_URL = (
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://thenaturespa.example.com"
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.naturewellnesspa.in"
 ).replace(/\/$/, "");
 
 export const site = {
