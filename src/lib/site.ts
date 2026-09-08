@@ -3,13 +3,12 @@ export const site = {
   tagline: "Luxury Wellness & Body Spa in Gurugram",
   shortDesc:
     "A premium sanctuary in the heart of Gurugram where ancient healing rituals meet modern luxury. Signature massages, aroma therapies and hammam experiences by certified therapists.",
-  // TODO: replace with your exact street address / landmark
   address: {
-    line1: "Sector 14 Market",
-    line2: "Gurugram, Haryana 122001",
+    line1: "2nd Floor, 42, Metro Mall Road, near Metro World Mall, Block B, Sector 56",
+    line2: "Gurugram, Haryana 122011",
     city: "Gurugram",
     region: "Haryana",
-    postalCode: "122001",
+    postalCode: "122011",
     country: "IN",
   },
   hours: "Open daily · 10:00 AM – 9:30 PM",
