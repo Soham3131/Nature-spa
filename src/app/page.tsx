@@ -3,6 +3,7 @@ import Experience from "@/components/sections/Experience";
 import Services from "@/components/sections/Services";
 import Gallery from "@/components/sections/Gallery";
 import Stats from "@/components/sections/Stats";
+import PhotoGallery from "@/components/home1/PhotoGallery";
 import Reviews from "@/components/sections/Reviews";
 import JournalPreview from "@/components/sections/JournalPreview";
 import Faq from "@/components/sections/Faq";
@@ -16,6 +17,7 @@ export default function Home() {
       <Services />
       <Gallery />
       <Stats />
+      <PhotoGallery />
       <Reviews />
       <JournalPreview />
       <Faq />
