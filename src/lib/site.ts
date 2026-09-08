@@ -13,8 +13,8 @@ export const site = {
     country: "IN",
   },
   hours: "Open daily · 10:00 AM – 9:30 PM",
-  phoneDisplay: "+91 89505 07450",
-  phoneRaw: "918950507450",
+  phoneDisplay: "+91 87968 67787",
+  phoneRaw: "918796867787",
   email: "thenaturespa9@gmail.com",
   socials: {
     instagram: "https://www.instagram.com/thenaturespa01/",

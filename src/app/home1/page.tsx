@@ -4,6 +4,7 @@ import Story from "@/components/home1/Story";
 import Rituals from "@/components/home1/Rituals";
 import Experience1 from "@/components/home1/Experience1";
 import Numbers from "@/components/home1/Numbers";
+import PhotoGallery from "@/components/home1/PhotoGallery";
 import Space from "@/components/home1/Space";
 import Products from "@/components/home1/Products";
 import Journey from "@/components/home1/Journey";
@@ -27,6 +28,7 @@ export default function Home1() {
       <Rituals />
       <Experience1 />
       <Numbers />
+      <PhotoGallery />
       <Space />
       <Products />
       <Journey />

@@ -12,6 +12,8 @@ type Props = {
   sizes?: string;
   priority?: boolean;
   label?: string;
+  /** "cover" crops to fill the box (default); "contain" shows the whole photo, letterboxed */
+  fit?: "cover" | "contain";
 };
 
 const DEFAULT_TONE = "linear-gradient(140deg,#12211b,#5c6b52 48%,#c9b184)";
@@ -32,6 +34,7 @@ export default function SmartImage({
   sizes = "(max-width: 768px) 100vw, 50vw",
   priority = false,
   label,
+  fit = "cover",
 }: Props) {
   const [failed, setFailed] = useState(false);
   const [loaded, setLoaded] = useState(false);
@@ -42,7 +45,7 @@ export default function SmartImage({
       <span
         aria-hidden
         className="absolute inset-0 transition-opacity duration-700"
-        style={{ background: tone, opacity: loaded ? 0 : 1 }}
+        style={{ background: tone, opacity: loaded && fit === "cover" ? 0 : 1 }}
       />
 
       {current ? (
@@ -55,7 +58,9 @@ export default function SmartImage({
           priority={priority}
           onError={() => setFailed(true)}
           onLoad={() => setLoaded(true)}
-          className="object-cover transition-[transform,opacity] duration-[900ms] ease-[cubic-bezier(0.16,1,0.3,1)]"
+          className={`transition-[transform,opacity] duration-[900ms] ease-[cubic-bezier(0.16,1,0.3,1)] ${
+            fit === "contain" ? "object-contain" : "object-cover"
+          }`}
           style={{ opacity: loaded ? 1 : 0 }}
         />
       ) : (

@@ -11,6 +11,7 @@ const links = [
   { href: "/#experience", label: "Experience" },
   { href: "/#services", label: "Therapies" },
   { href: "/#gallery", label: "Our Spa" },
+  { href: "/gallery", label: "Gallery" },
   { href: "/#reviews", label: "Reviews" },
   { href: "/blog", label: "Journal" },
   { href: "/#contact", label: "Contact" },

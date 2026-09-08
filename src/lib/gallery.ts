@@ -1,12 +1,25 @@
 import photos from "./photos.json";
 
-/** Photos actually present in /public/images at build time. */
-const present = new Set<string>(photos.files);
+/**
+ * Photos actually present in /public/images at build time, keyed by filename
+ * without its extension — so a data file can reference "gallery-1.jpg" and
+ * still pick up "gallery-1.webp" (or .png/.jpeg/.avif) if that's what was
+ * actually saved.
+ */
+const presentByBase = new Map<string, string>();
+for (const f of photos.files) {
+  const base = f.slice(0, f.lastIndexOf("."));
+  if (!presentByBase.has(base)) presentByBase.set(base, f);
+}
 
-/** Use the spa's own photo when it exists, otherwise the stock stand-in. */
+/** Use the spa's own photo when it exists (whatever format it's in), otherwise the stock stand-in. */
 export function resolvePhoto(localPath: string, fallback: string) {
   const file = localPath.split("/").pop() ?? "";
-  return present.has(file) ? localPath : fallback;
+  const dot = file.lastIndexOf(".");
+  const base = dot === -1 ? file : file.slice(0, dot);
+  const dir = localPath.slice(0, localPath.length - file.length);
+  const match = presentByBase.get(base);
+  return match ? `${dir}${match}` : fallback;
 }
 
 export type Shot = {
