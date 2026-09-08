@@ -5,10 +5,10 @@ import Reveal from "@/components/Reveal";
 import SmartImage from "@/components/SmartImage";
 import Lightbox from "@/components/Lightbox";
 import { galleryPhotos } from "@/lib/galleryPhotos";
-import { Eyebrow, TextLink } from "./ui";
+import { Eyebrow, Pill } from "./ui";
 
 export default function PhotoGallery() {
-  const tiles = galleryPhotos.slice(0, 6);
+  const tiles = galleryPhotos.slice(0, 4);
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
@@ -20,17 +20,18 @@ export default function PhotoGallery() {
             A closer look
             <br className="hidden sm:block" /> around the spa.
           </h2>
-          <div className="mt-6 flex justify-center">
-            <TextLink href="/gallery">See the full gallery</TextLink>
-          </div>
         </Reveal>
 
         <Reveal delay={140}>
-          <div className="mt-12 grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-3">
+          <div className="mt-12 grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-4">
             {tiles.map((photo, i) => (
               <Tile key={photo.src} photo={photo} onClick={() => setOpenIndex(i)} />
             ))}
           </div>
+        </Reveal>
+
+        <Reveal delay={200} className="mt-10 flex justify-center">
+          <Pill href="/gallery">View All</Pill>
         </Reveal>
       </div>
 

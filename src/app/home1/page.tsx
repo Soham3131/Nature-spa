@@ -4,10 +4,10 @@ import Story from "@/components/home1/Story";
 import Rituals from "@/components/home1/Rituals";
 import Experience1 from "@/components/home1/Experience1";
 import Numbers from "@/components/home1/Numbers";
-import PhotoGallery from "@/components/home1/PhotoGallery";
 import Space from "@/components/home1/Space";
 import Products from "@/components/home1/Products";
 import Journey from "@/components/home1/Journey";
+import PhotoGallery from "@/components/home1/PhotoGallery";
 import Testimonial from "@/components/home1/Testimonial";
 import CallToAction from "@/components/home1/CallToAction";
 import { site } from "@/lib/site";
@@ -28,10 +28,10 @@ export default function Home1() {
       <Rituals />
       <Experience1 />
       <Numbers />
-      <PhotoGallery />
       <Space />
       <Products />
       <Journey />
+      <PhotoGallery />
       <Testimonial />
       <CallToAction />
     </>
