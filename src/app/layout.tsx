@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Cormorant_Garamond, Jost } from "next/font/google";
 import "./globals.css";
-import { site } from "@/lib/site";
+import { site, SITE_URL } from "@/lib/site";
 import { reviews } from "@/lib/reviews";
 import { gallery } from "@/lib/gallery";
 import SmoothScroll from "@/components/SmoothScroll";
@@ -23,8 +23,6 @@ const sans = Jost({
   weight: ["300", "400", "500", "600"],
   display: "swap",
 });
-
-const SITE_URL = "https://thenaturespa.example.com"; // TODO: set your real domain
 
 /** Social share image — your own photo once it is in /public/images. */
 const OG_IMAGE = gallery[0].resolved;

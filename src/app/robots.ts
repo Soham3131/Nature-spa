@@ -1,10 +1,17 @@
 import type { MetadataRoute } from "next";
-
-const BASE = "https://thenaturespa.example.com"; // TODO: set your real domain
+import { SITE_URL } from "@/lib/site";
 
 export default function robots(): MetadataRoute.Robots {
   return {
-    rules: { userAgent: "*", allow: "/" },
-    sitemap: `${BASE}/sitemap.xml`,
+    rules: [
+      {
+        userAgent: "*",
+        allow: "/",
+        // Nothing here is worth crawling and it only burns crawl budget.
+        disallow: ["/api/", "/_next/"],
+      },
+    ],
+    sitemap: `${SITE_URL}/sitemap.xml`,
+    host: SITE_URL,
   };
 }

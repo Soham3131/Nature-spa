@@ -14,7 +14,7 @@ export default function Rituals() {
   const lastIndex = rest.length - 1;
 
   return (
-    <section id="rituals" className="relative bg-ivory">
+    <section id="services" className="relative bg-ivory">
       <div className="mx-auto max-w-[1400px] px-5 py-20 sm:px-8 sm:py-24 lg:py-28">
         <Reveal>
           <Eyebrow>Our Signature Rituals</Eyebrow>
@@ -23,7 +23,13 @@ export default function Rituals() {
               Therapies for a body
               <br className="hidden sm:block" /> that deserves to slow down.
             </h2>
-            <TextLink href="/#services" className="pb-2">
+            <TextLink
+              href={whatsappLink(
+                "Hi! Could you share your full treatment menu and prices?",
+              )}
+              external
+              className="pb-2"
+            >
               View All Treatments
             </TextLink>
           </div>

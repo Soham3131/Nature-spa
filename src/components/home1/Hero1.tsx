@@ -123,7 +123,7 @@ export default function Hero1() {
               transition={{ duration: 1, delay: 0.74, ease: [0.16, 1, 0.3, 1] }}
               className="mt-6 flex flex-wrap justify-center gap-2.5 sm:mt-9 sm:gap-3 lg:justify-start"
             >
-              <Pill href="#rituals">Explore Treatments</Pill>
+              <Pill href="#services">Explore Treatments</Pill>
               <Pill href="#experience" variant="outline">
                 Discover Our Rituals
               </Pill>

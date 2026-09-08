@@ -1,3 +1,16 @@
+/**
+ * Production origin, used for canonical URLs, the sitemap, robots.txt and the
+ * absolute image URLs in our social cards. Set NEXT_PUBLIC_SITE_URL in the host
+ * (Vercel: Project → Settings → Environment Variables) so this is right in
+ * every environment; the fallback below is only a placeholder.
+ *
+ * ⚠️  Google Search Console will not verify, and the sitemap will list URLs
+ *     nobody can visit, until this is the real domain.
+ */
+export const SITE_URL = (
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://thenaturespa.example.com"
+).replace(/\/$/, "");
+
 export const site = {
   name: "The Nature Spa",
   tagline: "Luxury Wellness & Body Spa in Gurugram",

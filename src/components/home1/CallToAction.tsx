@@ -40,7 +40,7 @@ export default function CallToAction() {
               <Pill href={whatsappLink(defaultWhatsAppMessage)} external variant="light">
                 Book Your Experience
               </Pill>
-              <Pill href="#rituals" variant="outline-light">
+              <Pill href="#services" variant="outline-light">
                 Explore Treatments
               </Pill>
             </div>

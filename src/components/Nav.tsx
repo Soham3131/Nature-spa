@@ -45,8 +45,7 @@ export default function Nav() {
         }`}
       >
         <nav className="mx-auto flex max-w-[1400px] items-center justify-between gap-6 px-5 sm:px-8">
-          {/* the wordmark goes to /home1 — the layout we are standing behind */}
-          <Link href="/home1" className="flex items-center gap-3" aria-label={site.name}>
+          <Link href="/" className="flex items-center gap-3" aria-label={site.name}>
             <Image
               src="/logo.png"
               alt=""
