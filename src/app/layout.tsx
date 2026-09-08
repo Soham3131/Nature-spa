@@ -113,12 +113,22 @@ function StructuredData() {
       ratingValue: site.rating.value,
       reviewCount: site.rating.count,
     },
-    review: reviews.slice(0, 5).map((r) => ({
-      "@type": "Review",
-      author: { "@type": "Person", name: r.name },
-      reviewRating: { "@type": "Rating", ratingValue: r.rating, bestRating: 5 },
-      reviewBody: r.text,
-    })),
+    /**
+     * Only genuine reviews go in here. Anything still flagged `sample` in
+     * reviews.ts is placeholder copy, and publishing it as Review markup would
+     * be feeding Google fabricated reviews — against its structured-data
+     * policy, and grounds for a manual action against the listing. Clear the
+     * `sample` flags as the real ones land and they appear automatically.
+     */
+    review: reviews
+      .filter((r) => !r.sample)
+      .slice(0, 5)
+      .map((r) => ({
+        "@type": "Review",
+        author: { "@type": "Person", name: r.name },
+        reviewRating: { "@type": "Rating", ratingValue: r.rating, bestRating: 5 },
+        reviewBody: r.text,
+      })),
   };
 
   return (

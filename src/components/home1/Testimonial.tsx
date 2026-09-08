@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, type ReactNode } from "react";
+import Image from "next/image";
 import { AnimatePresence, motion } from "motion/react";
 import { ArrowLeft, ArrowRight, Star } from "lucide-react";
 import SmartImage from "@/components/SmartImage";
@@ -66,15 +67,26 @@ export default function Testimonial() {
                       &ldquo;{r.text}&rdquo;
                     </p>
 
-                    <footer className="mt-6 flex flex-wrap items-center gap-x-4 gap-y-2">
-                      <span aria-hidden className="flex gap-0.5">
-                        {Array.from({ length: r.rating }).map((_, n) => (
-                          <Star key={n} size={12} className="fill-butter text-butter" />
-                        ))}
-                      </span>
-                      <span className="text-[12px] tracking-wide text-forest">{r.name}</span>
-                      <span className="text-[11px] tracking-wide text-muted">
-                        {r.source} · {r.date}
+                    <footer className="mt-7 flex items-center gap-3.5">
+                      <Avatar name={r.name} initials={r.initials} src={r.avatar} />
+                      <span className="min-w-0">
+                        <span className="flex flex-wrap items-center gap-x-2.5 gap-y-1">
+                          <span className="text-[12.5px] tracking-wide text-forest">
+                            {r.name}
+                          </span>
+                          <span
+                            aria-hidden
+                            className="flex gap-0.5"
+                            title={`${r.rating} out of 5`}
+                          >
+                            {Array.from({ length: r.rating }).map((_, n) => (
+                              <Star key={n} size={11} className="fill-butter text-butter" />
+                            ))}
+                          </span>
+                        </span>
+                        <span className="mt-0.5 block text-[11px] tracking-wide text-muted">
+                          {r.date}
+                        </span>
                       </span>
                     </footer>
                   </motion.blockquote>
@@ -98,6 +110,44 @@ export default function Testimonial() {
         </div>
       </div>
     </section>
+  );
+}
+
+/**
+ * The reviewer's photograph, falling back to an initials badge — most real
+ * reviews arrive without one, so the card has to look finished either way.
+ */
+function Avatar({
+  name,
+  initials,
+  src,
+}: {
+  name: string;
+  initials: string;
+  src?: string;
+}) {
+  const [failed, setFailed] = useState(false);
+
+  if (!src || failed) {
+    return (
+      <span
+        aria-hidden
+        className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-forest/8 text-[12px] tracking-wide text-forest/70"
+      >
+        {initials}
+      </span>
+    );
+  }
+
+  return (
+    <Image
+      src={src}
+      alt={name}
+      width={44}
+      height={44}
+      onError={() => setFailed(true)}
+      className="h-11 w-11 shrink-0 rounded-full object-cover ring-1 ring-forest/10"
+    />
   );
 }
 
