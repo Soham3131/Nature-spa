@@ -26,9 +26,9 @@ const ritualArt = [
   },
   {
     slug: "balinese-massage",
-    image: u("1709755491926-f7aa83748967"),
-    tone: "linear-gradient(140deg,#1f2a22,#5e7a5c 48%,#cfdcc4)",
-    alt: "A therapist working along the shoulders during a Balinese massage",
+    image: u("1741522509438-a120c0bb5e88"),
+    tone: "linear-gradient(140deg,#2c1f16,#95684a 48%,#ecd2b6)",
+    alt: "Long, oiled strokes worked down the back during a Balinese massage",
   },
   {
     slug: "deep-tissue",
@@ -134,9 +134,9 @@ export const journey = [
     step: "02",
     title: "Unwind",
     line: "Let go of the stress",
-    image: u("1709755491926-f7aa83748967", 500),
-    tone: "linear-gradient(140deg,#1f2a22,#5e7a5c 50%,#cfdcc4)",
-    alt: "Slow strokes along the back at the start of a massage",
+    image: u("1639162906614-0603b0ae95fd", 500),
+    tone: "linear-gradient(140deg,#241c15,#7d5f45 50%,#dcc3a6)",
+    alt: "A therapist easing the shoulders at the start of a massage",
   },
   {
     step: "03",
