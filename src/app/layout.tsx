@@ -95,6 +95,15 @@ function StructuredData() {
     },
     /** Points at the same Business Profile the number is registered to. */
     hasMap: site.socials.google,
+    /**
+     * Read off the Business Profile's own map link, so the pin Google has for
+     * the listing and the pin declared here are the same one.
+     */
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: 28.4285281,
+      longitude: 77.0995597,
+    },
     contactPoint: {
       "@type": "ContactPoint",
       telephone: `+${site.phoneRaw}`,
