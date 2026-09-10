@@ -81,6 +81,19 @@ export default function Nav() {
           </ul>
 
           <div className="flex items-center gap-3">
+            {/*
+              Two renderings of one number. Google indexes the phone layout, so
+              the digits stay in the markup at every width rather than being
+              dropped below md — the small screens just show them as an icon.
+            */}
+            <a
+              href={`tel:+${site.phoneRaw}`}
+              aria-label={`Call ${site.name} on ${site.phoneDisplay}`}
+              className="grid h-10 w-10 place-items-center rounded-full border border-forest/15 text-forest transition-colors hover:border-forest/40 md:hidden"
+            >
+              <Phone size={16} strokeWidth={1.6} />
+            </a>
+
             <a
               href={`tel:+${site.phoneRaw}`}
               className="hidden items-center gap-2 text-[13px] tracking-wide text-body transition-colors hover:text-forest md:flex"

@@ -2,7 +2,7 @@
 
 A scroll-driven website for **The Nature Spa**, built with Next.js 16, React 19,
 Tailwind CSS v4 and Motion. Every enquiry routes straight to WhatsApp on
-**+91 89505 07450**.
+**+91 87968 67787**.
 
 ---
 
@@ -200,7 +200,7 @@ frames:
 ### Contact form → WhatsApp
 
 `Contact.tsx` validates the name and mobile number, composes a formatted
-message and opens `wa.me/918950507450` with it pre-filled. **No data is stored
+message and opens `wa.me/918796867787` with it pre-filled. **No data is stored
 or sent anywhere else** — there is no backend and no database.
 
 To change the number, edit `phoneRaw` and `phoneDisplay` in `src/lib/site.ts`;

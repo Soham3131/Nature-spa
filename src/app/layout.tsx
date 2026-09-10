@@ -79,10 +79,29 @@ function StructuredData() {
     name: site.name,
     description: site.shortDesc,
     url: SITE_URL,
+    /**
+     * E.164, digits only after the +. This is the string Google matches
+     * against the number on the Business Profile, so it must not pick up the
+     * spaces that `phoneDisplay` uses for humans.
+     */
     telephone: `+${site.phoneRaw}`,
     email: site.email,
     image: [OG_ABSOLUTE],
     priceRange: "₹₹",
+    currenciesAccepted: "INR",
+    areaServed: {
+      "@type": "City",
+      name: site.address.city,
+    },
+    /** Points at the same Business Profile the number is registered to. */
+    hasMap: site.socials.google,
+    contactPoint: {
+      "@type": "ContactPoint",
+      telephone: `+${site.phoneRaw}`,
+      contactType: "reservations",
+      areaServed: site.address.country,
+      availableLanguage: ["en", "hi"],
+    },
     address: {
       "@type": "PostalAddress",
       streetAddress: site.address.line1,
