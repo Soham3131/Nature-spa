@@ -25,7 +25,7 @@ export default function Rituals() {
             </h2>
             <TextLink
               href={whatsappLink(
-                "Hi! Could you share your full treatment menu and prices?",
+                "Hi! Could you share your full treatment menu?",
               )}
               external
               className="pb-2"
@@ -117,8 +117,6 @@ function RitualCard({
         >
           <span className="flex flex-wrap items-baseline gap-x-2 gap-y-0.5 text-[10.5px] tracking-wide text-body sm:gap-2.5 sm:text-[11.5px]">
             {ritual.duration}
-            <span className="hidden h-3 w-px bg-forest/15 sm:block" />
-            <span className="text-forest">{ritual.price}</span>
           </span>
           <ArrowBadge sizeClass="h-7 w-7 sm:h-9 sm:w-9" />
         </span>

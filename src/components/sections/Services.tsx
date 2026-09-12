@@ -84,8 +84,8 @@ export default function Services() {
                       {s.short}
                     </span>
                     <span className="mt-3 flex items-center justify-between border-t border-forest/10 pt-2.5 sm:mt-5 sm:pt-3.5">
-                      <span className="text-[11.5px] tracking-wide text-forest-2 sm:text-[13.5px]">
-                        {s.price}
+                      <span className="text-[11.5px] tracking-wide text-forest/70 sm:text-[13px]">
+                        View details
                       </span>
                       <span className="flex h-6 w-6 items-center justify-center rounded-full bg-forest/6 text-forest transition-all duration-500 group-hover:bg-forest group-hover:text-ivory sm:h-7 sm:w-7">
                         <ArrowUpRight size={14} strokeWidth={1.6} />
@@ -100,8 +100,7 @@ export default function Services() {
 
         <Reveal delay={160}>
           <p className="mt-10 text-center text-[12.5px] tracking-wide text-muted">
-            Prices are indicative — confirm current rates and offers on WhatsApp.
-            Couple and package rates available.
+            Confirm current rates, special packages and customized offers on WhatsApp.
           </p>
         </Reveal>
       </div>
@@ -137,7 +136,7 @@ export default function Services() {
                 />
                 <div className="absolute bottom-5 left-6 right-6">
                   <p className="text-[10.5px] uppercase tracking-[0.24em] text-lime">
-                    {active.duration} · {active.price}
+                    {active.duration}
                   </p>
                   <h3 className="display mt-1.5 text-3xl leading-tight text-ivory">
                     {active.name}

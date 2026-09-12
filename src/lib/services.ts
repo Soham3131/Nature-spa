@@ -4,7 +4,6 @@ export type Service = {
   short: string;
   description: string;
   duration: string;
-  price: string;
   benefits: string[];
   accent: string;
   /** card photograph */
@@ -19,7 +18,6 @@ export const services: Service[] = [
     description:
       "A full-body ceremony that opens with a warm herbal compress, flows into deep aromatic strokes along the spine and shoulders, and closes with a scalp and foot release. Designed for guests carrying weeks of desk tension.",
     duration: "90 min",
-    price: "₹2,999",
     benefits: ["Full-body tension release", "Warm herbal compress", "Scalp & foot ritual"],
     accent: "#2e7d32",
     image:
@@ -32,7 +30,6 @@ export const services: Service[] = [
     description:
       "Traditional Indonesian bodywork combining acupressure, gentle stretching and skin rolling. Deeply relaxing yet firm enough to reach knotted muscle — the most requested therapy at our Gurugram spa.",
     duration: "60 / 90 min",
-    price: "from ₹1,899",
     benefits: ["Improves circulation", "Relieves muscle knots", "Calms the nervous system"],
     accent: "#6fbb42",
     image:
@@ -45,7 +42,6 @@ export const services: Service[] = [
     description:
       "Slow, firm strokes that work through the deeper layers of muscle and fascia. Ideal for gym-goers, long commuters and anyone living with chronic neck, back or shoulder stiffness.",
     duration: "60 / 90 min",
-    price: "from ₹2,199",
     benefits: ["Chronic pain relief", "Better mobility", "Post-workout recovery"],
     accent: "#a9704a",
     image:
@@ -58,7 +54,6 @@ export const services: Service[] = [
     description:
       "Choose your blend — lavender to sleep, lemongrass to lift, sandalwood to ground. Light, rhythmic strokes carry the oils into the skin while the aroma settles the mind.",
     duration: "60 min",
-    price: "from ₹1,699",
     benefits: ["Stress & anxiety relief", "Better sleep", "Mood lift"],
     accent: "#9c86c0",
     image:
@@ -71,7 +66,6 @@ export const services: Service[] = [
     description:
       "A rhythmic sequence of compressions and guided yoga-like stretches performed on a mat. Leaves you feeling longer, looser and unusually light on your feet.",
     duration: "60 / 90 min",
-    price: "from ₹1,999",
     benefits: ["Increases flexibility", "Releases hips & hamstrings", "Energising"],
     accent: "#4e9a8f",
     image:
@@ -84,7 +78,6 @@ export const services: Service[] = [
     description:
       "A traditional bathing ritual — steam to soften, black soap to cleanse, and a kessa mitt exfoliation that lifts away dull skin. Finished with a hydrating body wrap.",
     duration: "75 min",
-    price: "₹2,799",
     benefits: ["Full-body exfoliation", "Visible glow", "Detoxifying"],
     accent: "#c98f5a",
     image:
@@ -97,7 +90,6 @@ export const services: Service[] = [
     description:
       "Targeted thumb pressure across the reflex map of the foot, finishing with a warm soak and cooling balm. A perfect 45-minute reset between meetings.",
     duration: "45 min",
-    price: "₹1,299",
     benefits: ["Relieves tired legs", "Improves sleep", "Quick reset"],
     accent: "#8fc24a",
     image:
@@ -110,7 +102,6 @@ export const services: Service[] = [
     description:
       "Our private suite set for two — synchronized massages, warm towels, and a quiet hour away from the city. Popular for anniversaries and birthdays.",
     duration: "90 min",
-    price: "₹5,499 for two",
     benefits: ["Private suite", "Two therapists", "Celebration-ready"],
     accent: "#c77e8a",
     image:

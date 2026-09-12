@@ -67,7 +67,6 @@ export type Ritual = {
   name: string;
   short: string;
   duration: string;
-  price: string;
   image: string;
   tone: string;
   alt: string;
@@ -81,7 +80,6 @@ export const rituals: Ritual[] = ritualArt.map((art) => {
     name: s.name,
     short: s.short,
     duration: s.duration,
-    price: s.price,
   };
 });
 

@@ -189,7 +189,7 @@ export default function Contact() {
                     >
                       {services.map((s) => (
                         <option key={s.slug} value={s.name} className="bg-paper">
-                          {s.name} — {s.price}
+                          {s.name}
                         </option>
                       ))}
                       <option value="Not sure — please advise" className="bg-paper">

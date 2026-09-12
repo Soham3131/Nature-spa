@@ -2,12 +2,12 @@
 
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
-import { Phone } from "lucide-react";
+import { MapPin, Phone } from "lucide-react";
 import { site, whatsappLink, defaultWhatsAppMessage } from "@/lib/site";
 
 /**
- * The two ways to reach us, stacked in the corner once the hero is behind you:
- * a call button riding above the WhatsApp one.
+ * The ways to reach us, stacked in the corner once the hero is behind you:
+ * a map pin button and call button riding above the WhatsApp one.
  *
  * Only the WhatsApp button pulses — two pinging circles in the same corner read
  * as noise rather than as an invitation.
@@ -43,6 +43,20 @@ export default function WhatsAppFab() {
           transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
           className="fixed bottom-5 right-5 z-60 flex flex-col items-end gap-3 sm:bottom-7 sm:right-7"
         >
+          <a
+            href={site.socials.google}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`Get directions to ${site.name} on Google Maps`}
+            className="group grid h-12 w-12 place-items-center rounded-full bg-forest text-ivory shadow-[0_10px_34px_-8px_rgba(23,56,26,0.75)] transition-transform duration-300 hover:scale-110 active:scale-95 sm:h-14 sm:w-14"
+          >
+            <MapPin
+              size={20}
+              strokeWidth={1.7}
+              className="transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-0.5"
+            />
+          </a>
+
           <a
             href={`tel:+${site.phoneRaw}`}
             aria-label={`Call ${site.name} on ${site.phoneDisplay}`}
