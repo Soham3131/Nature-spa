@@ -31,7 +31,8 @@ export const site = {
   socials: {
     instagram: "https://www.instagram.com/thenaturespa01/",
     facebook: "https://www.facebook.com/profile.php?id=61593944502619",
-    google: "https://share.google/0paYzNDs4YWZt8Bs0",
+    google:
+      "https://www.google.com/maps/place/The+Nature+Spa/@28.4285281,77.0995597,17z/data=!3m1!4b1!4m6!3m5!1s0x390d19a371d82d83:0x3cd5765dea970b21!8m2!3d28.4285281!4d77.0995597!16s%2Fg%2F11zdf2n2x2",
   },
   /**
    * The walkthrough video on our Google Business Profile. Google does not

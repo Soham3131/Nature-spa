@@ -107,11 +107,16 @@ export default function Footer() {
             <ul className="mt-5 space-y-4 text-sm text-ivory/75">
               <li className="flex gap-3">
                 <MapPin size={16} strokeWidth={1.5} className="mt-0.5 shrink-0 text-lime" />
-                <span>
+                <a
+                  href={site.socials.google}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="transition-colors hover:text-lime"
+                >
                   {site.address.line1}
                   <br />
                   {site.address.line2}
-                </span>
+                </a>
               </li>
               <li className="flex gap-3">
                 <Clock size={16} strokeWidth={1.5} className="mt-0.5 shrink-0 text-lime" />
@@ -138,6 +143,37 @@ export default function Footer() {
               className="mt-6 inline-block rounded-full bg-lime px-6 py-3 text-[11px] uppercase tracking-[0.22em] text-forest transition-transform duration-300 hover:scale-[1.04]"
             >
               WhatsApp us
+            </a>
+          </div>
+        </div>
+
+        {/* --- Embedded Google Map --- */}
+        <div className="mt-14 overflow-hidden rounded-2xl border border-ivory/15 bg-black/20 shadow-2xl backdrop-blur-sm">
+          <div className="relative h-64 w-full sm:h-72">
+            <iframe
+              title="The Nature Spa Location Map"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3509.11718010899!2d77.0995597!3d28.4285281!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d19a371d82d83%3A0x3cd5765dea970b21!2sThe%20Nature%20Spa!5e0!3m2!1sen!2sin!4v1710000000000!5m2!1sen!2sin"
+              width="100%"
+              height="100%"
+              style={{ border: 0 }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              className="h-full w-full opacity-90 transition-opacity hover:opacity-100"
+            />
+          </div>
+          <div className="flex flex-col items-center justify-between gap-3 border-t border-ivory/10 bg-forest/90 px-6 py-4 sm:flex-row">
+            <div className="flex items-center gap-3 text-xs tracking-wide text-ivory/80">
+              <MapPin size={16} className="shrink-0 text-lime" />
+              <span>{site.address.line1}, {site.address.line2}</span>
+            </div>
+            <a
+              href={site.socials.google}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 rounded-full border border-lime/40 bg-lime/10 px-4 py-2 text-[11px] uppercase tracking-[0.16em] text-lime transition-all hover:bg-lime hover:text-forest"
+            >
+              Open Direct Google Map
             </a>
           </div>
         </div>
